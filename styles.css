@@ -22,7 +22,7 @@ body {
 }
 
 #title {
-    height: 100vh;
+    height: 100svh;
     width: 100vw;
     display: flex;
     flex-flow: column;
@@ -35,13 +35,13 @@ h1 {
     color: #31c3dd;
     text-shadow: 0 0 5px #31c3dd, 0 0 15px #31c3dd, 0 0 25px #31c3dd;
     padding: 20px;
-    font-size: 8vh;
+    font-size: 8svh;
     text-align: center;
     letter-spacing: 0.2em;
 }
 
 h3{
-    font-size: 3vh;
+    font-size: 3svh;
 }
 
 span {
@@ -53,10 +53,10 @@ span {
     border-style: solid;
     border-width: 3px;
     border-radius: 50px;
-    font-size: 3vh;
+    font-size: 3svh;
     background-color: transparent;
-    height: 9vh;
-    width: 50vh;
+    height: 9svh;
+    width: 50svh;
     margin-bottom: 20px;
     color: #E0E0E0;
     box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
@@ -86,9 +86,9 @@ span {
 #submit{
     border-color: #fffb00;
     box-shadow: 0 0 8px #fffb00, 0 0 15px #fffb00;
-    font-size: 3vh;
-    width: 30vh;
-    height: 7vh;
+    font-size: 3svh;
+    width: 30svh;
+    height: 7svh;
 }
 
 #submit:hover {
@@ -105,14 +105,14 @@ span {
     align-content: center;
     border: 3px solid #ffffff;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-    height: 80vh;
+    height: 80svh;
     aspect-ratio: 1;
 }
 
 .left, .right {
     border: 3px solid #ffffff;
-    height: 80vh;
-    width: 40vh;
+    height: 80svh;
+    width: 40svh;
     box-shadow: 0 0 5px rgba(0, 191, 255, 0.3);
 }
 
@@ -123,18 +123,18 @@ span {
 .right {
     padding: 5px;
     border-left: none;
-    padding: 0 5vh;
+    padding: 0 5svh;
 }
 
 header {
-    height: 10vh;
+    height: 10svh;
     margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     color: #39FF14;
     text-shadow: 0 0 5px #39FF14, 0 0 10px #39FF14, 0 0 15px rgba(57, 255, 20, 0.7);
-    font-size: 5vh;
+    font-size: 5svh;
 }
 
 #limit{
@@ -143,7 +143,7 @@ header {
 }
 
 footer {
-    height: 10vh;
+    height: 10svh;
     margin: 0;
     text-align: center;
     flex-flow: column;
@@ -151,7 +151,7 @@ footer {
     justify-content: center;
     align-items: center;
     color: #A0A0A0;
-    font-size: 2.5vh;
+    font-size: 2.5svh;
 }
 
 main {
@@ -168,7 +168,7 @@ main {
     border-width: 1px;
     border-color: #555555;
     background-color: #0E0E1A;
-    font-size: 2.5vh;
+    font-size: 2.5svh;
     width: 5%;
     height: 5%;
     display: flex;
