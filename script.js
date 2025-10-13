@@ -8,6 +8,7 @@ let tyu = 0;
 let over = 0;
 let sei = 0, mis = 0, hus = 0, kon = 0, total = 0, high = 0;
 let timerId;
+let clickok = false;
 
 let obj = [];
 for(i=0; i<stage+2; i++){
@@ -258,12 +259,16 @@ function label() {
   const button = document.querySelectorAll('.zero, .one, .two, .three, .four, .five, .six, .seven, .eight, .nine');
   button.forEach((one) => {
     const set = () => {
-      one.classList.toggle('checked');
-      one.classList.remove('flag');
+      if(clickok){
+        one.classList.toggle('checked');
+        one.classList.remove('flag');
+      }
     };
     const flag = () => {
-      one.classList.toggle('flag');
-      one.classList.remove('checked');
+      if(clickok){
+        one.classList.toggle('flag');
+        one.classList.remove('checked');
+      }
     }
     one.addEventListener('keydown', (event) => {
       event.preventDefault();
@@ -271,6 +276,7 @@ function label() {
     one.addEventListener('click', set);
     one.addEventListener('contextmenu', flag);
   })
+  clickok = true;
   const totalTime = stage * 10000;
   const oldTime = Date.now();
   timerId = setInterval(() => {
@@ -288,6 +294,7 @@ function label() {
 
     if(remainMSec <= 0){
       clearInterval(timerId);
+      clickok = false;
       tyu = 1;
       result();
     }
@@ -428,21 +435,22 @@ function setup() {
   tyu = 0;
   if(men == 1) stage = 5;
   else{
-    let random = Math.floor(Math.random() * 105);
-    if(random < 14) stage = 5;
-    else if(random < 27) stage = 6;
-    else if(random < 39) stage = 7;
-    else if(random < 50) stage = 8;
-    else if(random < 60) stage = 9;
-    else if(random < 69) stage = 10;
-    else if(random < 77) stage = 11;
-    else if(random < 84) stage = 12;
-    else if(random < 90) stage = 13;
-    else if(random < 95) stage = 14;
-    else if(random < 99) stage = 15;
-    else if(random < 102) stage = 16;
-    else if(random < 104) stage = 17;
-    else if(random < 105) stage = 18;
+    let random = Math.floor(Math.random() * 1009); // 0から1008までの乱数
+
+    if(random < 256) stage = 5; 
+    else if(random < 448) stage = 6;  // 256 + 192 = 448
+    else if(random < 592) stage = 7;  // 448 + 144 = 592
+    else if(random < 700) stage = 8;  // 592 + 108 = 700
+    else if(random < 781) stage = 9;  // 700 + 81 = 781
+    else if(random < 842) stage = 10; // 781 + 61 = 842
+    else if(random < 888) stage = 11; // 842 + 46 = 888
+    else if(random < 923) stage = 12; // 888 + 35 = 923
+    else if(random < 949) stage = 13; // 923 + 26 = 949
+    else if(random < 969) stage = 14; // 949 + 20 = 969
+    else if(random < 984) stage = 15; // 969 + 15 = 984
+    else if(random < 995) stage = 16; // 984 + 11 = 995
+    else if(random < 1003) stage = 17; // 995 + 8 = 1003
+    else stage = 18;                     // 1003 + 6 = 1009 (random=1003〜1008)
   }
   for(i=0; i<stage+2; i++){
     obj[i] = [];
@@ -480,6 +488,7 @@ function setup() {
 function end(){
   if(!tyu){
     clearInterval(timerId);
+    clickok = false;
     result();
     let sub = document.getElementById('submit');
     sub.innerHTML = '次のステージへ';
@@ -525,8 +534,6 @@ function title(){
     high = 0;
   }
 }
-
-
 
 
 
