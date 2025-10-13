@@ -433,7 +433,7 @@ function setup() {
   wmap = [];
   sei = 0, mis = 0, hus = 0, kon = 0;
   tyu = 0;
-  if(men == 1) stage = 5;
+  if(men <= 3) stage = 5;
   else{
     let random = Math.floor(Math.random() * 1009); // 0から1008までの乱数
 
@@ -534,6 +534,7 @@ function title(){
     high = 0;
   }
 }
+
 
 
 
