@@ -486,7 +486,7 @@ function setup() {
 }
 
 function end(){
-  if(!tyu){
+  if(!tyu && clickok){
     clearInterval(timerId);
     clickok = false;
     result();
@@ -497,11 +497,11 @@ function end(){
       sub.innerHTML = 'タイトルへ';
     }
   }
-  else if(!over){
+  else if(!over && tyu){
     men++;
     setup();
   }
-  else{
+  else if(over && tyu){
     location.reload();
   }
 }
@@ -534,7 +534,6 @@ function title(){
     high = 0;
   }
 }
-
 
 
 
