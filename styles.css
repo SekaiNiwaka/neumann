@@ -10,6 +10,7 @@ button:focus {
 
 button {
     font-family: "Noto Serif JP", serif;
+    padding: 0;
 }
 
 body {
@@ -270,3 +271,4 @@ main {
 .safe::after{
     background-image: url('maru.png'); 
 }
+
