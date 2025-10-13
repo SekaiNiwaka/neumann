@@ -502,6 +502,7 @@ async function gs(){
   const title = document.getElementById('title');
   title.style.display = 'none';
   game.style.display = 'block';
+  openFullscreen();
   let go = document.getElementById('over');
   go.style.display = 'none';
   await delay(1000);
@@ -525,6 +526,7 @@ function title(){
     high = 0;
   }
 }
+
 
 
 
