@@ -213,7 +213,7 @@ main {
 
 .checked {
     background-color: #36bd0056;
-    border-width: 5px;
+    border-width: 0.5svh;
     border-color: #00ff00;
     box-shadow: 0 0 5px #1eff30, 0 0 10px rgba(255, 255, 0, 0.7);
 }
@@ -286,3 +286,4 @@ main {
 .safe::after{
     background-image: url('maru.png'); 
 }
+
