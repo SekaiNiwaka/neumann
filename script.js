@@ -435,22 +435,22 @@ function setup() {
   tyu = 0;
   if(men <= 3) stage = 5;
   else{
-    let random = Math.floor(Math.random() * 1009); // 0から1008までの乱数
+    let random = Math.floor(Math.random() * 573); // 0から572までの乱数
 
-    if(random < 256) stage = 5; 
-    else if(random < 448) stage = 6;  // 256 + 192 = 448
-    else if(random < 592) stage = 7;  // 448 + 144 = 592
-    else if(random < 700) stage = 8;  // 592 + 108 = 700
-    else if(random < 781) stage = 9;  // 700 + 81 = 781
-    else if(random < 842) stage = 10; // 781 + 61 = 842
-    else if(random < 888) stage = 11; // 842 + 46 = 888
-    else if(random < 923) stage = 12; // 888 + 35 = 923
-    else if(random < 949) stage = 13; // 923 + 26 = 949
-    else if(random < 969) stage = 14; // 949 + 20 = 969
-    else if(random < 984) stage = 15; // 969 + 15 = 984
-    else if(random < 995) stage = 16; // 984 + 11 = 995
-    else if(random < 1003) stage = 17; // 995 + 8 = 1003
-    else stage = 18;                     // 1003 + 6 = 1009 (random=1003〜1008)
+    if(random < 200) stage = 5; 
+    else if(random < 330) stage = 6;  // 200 + 130
+    else if(random < 415) stage = 7;  // 330 + 85
+    else if(random < 470) stage = 8;  // 415 + 55
+    else if(random < 506) stage = 9;  // 470 + 36
+    else if(random < 529) stage = 10; // 506 + 23
+    else if(random < 544) stage = 11; // 529 + 15
+    else if(random < 554) stage = 12; // 544 + 10
+    else if(random < 561) stage = 13; // 554 + 7
+    else if(random < 566) stage = 14; // 561 + 5
+    else if(random < 569) stage = 15; // 566 + 3
+    else if(random < 571) stage = 16; // 569 + 2
+    else if(random < 572) stage = 17; // 571 + 1
+    else stage = 18;                     // 572 + 1 (random=572)
   }
   for(i=0; i<stage+2; i++){
     obj[i] = [];
