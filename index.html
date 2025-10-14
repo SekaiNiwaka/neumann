@@ -24,7 +24,16 @@
 
             <main>
                 <div class="left">
+                    <div id="des">
 
+                    </div>
+
+                    <div id="sel">
+                        <button class="pen">選択</button>
+                        <button class="fla">メモ</button>
+                        <div class="break"></div>
+                        <button class="tim">+10秒</button>
+                    </div>
                 </div>
 
                 <div class="line"></div>
@@ -34,19 +43,19 @@
                 </div>
                 <div class="right">
                     <div id="all">
-                        <h3>総合得点　：　0</h3>
-                        <h3>最高記録　：　0</h3>
+                        <h3>総合得点　：　20</h3>
+                        <h3>最高記録　：　20</h3>
                     </div>
                     <div id="men">
                         <h3 style="text-align: center;">ステージ1</h3>
                     </div>
-                    <div id="score">
-                        <h3 style="color: red;">正解　：　---</h3>
+                    <div id="scr">
+                        <h3 style="color: red;">正解　　：　---</h3>
                         <h3 style="color: yellow;">未選択　：　---</h3>
-                        <h3 style="color: blue;">不正解　：　---</h3>
-                        <h3>今回の得点　：　---</h3>
+                        <h3 style="color: royalblue;">不正解　：　---</h3>
+                        <h3>合計　　：　---</h3>
                     </div>
-                    <button id="submit">これで確定</button>
+                    <button id="submit">確定</button>
                     <h3 id="over" style="display: flex; justify-content: center; color: red;">GAME OVER!</h3>
                 </div>
             </main>
@@ -61,5 +70,4 @@
         <script type="text/javascript" src="script.js"></script>
 
     </body>
-
 </html>

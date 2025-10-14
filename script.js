@@ -6,9 +6,10 @@ let stage = 5;
 let men = 1;
 let tyu = 0;
 let over = 0;
-let sei = 0, mis = 0, hus = 0, kon = 0, total = 0, high = 0;
+let sei = 0, mis = 0, hus = 0, kon = 0, total = 20, high = 20;
 let timerId;
 let clickok = false;
+let clmax = 4, clnum = 0;
 
 let obj = [];
 for(i=0; i<stage+2; i++){
@@ -72,6 +73,9 @@ async function create() {
   let element, wall, random;
   for(i=0; i<stage; i++){
     wall = document.createElement('div');
+    wall.style.height = 100/(stage+2) + '%';
+    wall.style.width = 100/(stage+2) + '%';
+    
     target.appendChild(wall);
     random = Math.floor(Math.random() * 4);
     switch(random){
@@ -99,6 +103,8 @@ async function create() {
 
   for(i=0; i<stage; i++){
     wall = document.createElement('div');
+    wall.style.height = 100/(stage+2) + '%';
+    wall.style.width = 100/(stage+2) + '%';
     target.appendChild(wall);
     random = Math.floor(Math.random() * 4);
     switch(random){
@@ -121,59 +127,73 @@ async function create() {
       //今日ここから
       random = Math.floor(Math.random() * 10);
       if(random <= 8){
-        random = Math.floor(Math.random() * Math.round(stage/2+1));
         element = document.createElement('button');
+        element.style.height = 100/(stage+2) + '%';
+        element.style.width = 100/(stage+2) + '%';
+        element.style.fontSize = (100/(stage+2))/5 * 2.5 + 'svh';
         target.appendChild(element);
+        random = Math.floor(Math.random() *  5);
+        if(random >= 3){
+          random = 8;
+        }
+        else{
+          random = Math.floor(Math.random() *  Math.round(stage/2-1));
+        }
+        
         switch(random){
-          case 2:
+          case 0:
             element.textContent = 2;
             element.classList.add('two');
             num[i+1][j+1] = 2;
             break;
-          case 3:
+          case 1:
             element.textContent = 3;
             element.classList.add('three');
             num[i+1][j+1] = 3;
             break;
-          case 4:
+          case 2:
             element.textContent = 4;
             element.classList.add('four');
             num[i+1][j+1] = 4;
             break;
-          case 5:
+          case 3:
             element.textContent = 5;
             element.classList.add('five');
             num[i+1][j+1] = 5;
             break;
-          case 6:
+          case 4:
             element.textContent = 6;
             element.classList.add('six');
             num[i+1][j+1] = 6;
             break;
-          case 7:
+          case 5:
             element.textContent = 7;
             element.classList.add('seven');
             num[i+1][j+1] = 7;
             break;
-          case 8:
+          case 6:
             element.textContent = 8;
             element.classList.add('eight');
             num[i+1][j+1] = 8;
             break;
-          case 9:
+          case 7:
             element.textContent = 9;
             element.classList.add('nine');
             num[i+1][j+1] = 9;
             break;
           default:
+            element.textContent = '';
             element.classList.add('zero');
-            break;
+            num[i+1][j+1] = 0;
+
         }
         obj[i+1][j+1] = element;
       }
       else{
         random = Math.floor(Math.random() * 4);
         wall = document.createElement('div');
+        wall.style.height = 100/(stage+2) + '%';
+        wall.style.width = 100/(stage+2) + '%';
         target.appendChild(wall);
         switch(random){
           case 1:
@@ -195,6 +215,8 @@ async function create() {
       await delay(25);
     }
     wall = document.createElement('div');
+    wall.style.height = 100/(stage+2) + '%';
+    wall.style.width = 100/(stage+2) + '%';
     target.appendChild(wall);
     random = Math.floor(Math.random() * 3);
     if(wmap[i+stage] == 1){
@@ -222,6 +244,8 @@ async function create() {
 
   for(i=0; i<stage; i++){
     wall = document.createElement('div');
+    wall.style.height = 100/(stage+2) + '%';
+    wall.style.width = 100/(stage+2) + '%';
     target.appendChild(wall);
     random = Math.floor(Math.random() * 3);
     if(wmap[i] == 1){
@@ -273,8 +297,15 @@ function label() {
     one.addEventListener('keydown', (event) => {
       event.preventDefault();
     });
-    one.addEventListener('click', set);
-    one.addEventListener('contextmenu', flag);
+    if(document.getElementsByClassName('pen-s') != null)
+    {
+      one.addEventListener('click', set);
+      one.addEventListener('contextmenu', set);
+    }
+    else{
+      one.addEventListener('click', flag);
+      one.addEventListener('contextmenu', flag);
+    }
   })
   clickok = true;
   const totalTime = stage * 10000;
@@ -302,6 +333,7 @@ function label() {
     document.querySelector('header').innerHTML = label;
   }, 1000);
 }
+
 
 function judge(){
   for(i=0; i<stage; i++){
@@ -349,11 +381,14 @@ function result(){
     }
   }
   kon = sei*10 - mis*5 - hus*15;
-  let s = document.getElementById('score');
-  s.innerHTML = '<h3 style="color: red;">正解　：　+10 × ' + sei + '</h3> <h3 style="color: yellow;">未選択　：　-5 × ' + mis + '</h3> <h3 style="color: blue;">不正解　：　-15 × ' + hus + '</h3> <h3>今回の得点　：　' + kon + '</h3>';
+  let s = document.getElementById('scr');
+  s.innerHTML = '<h3 style="color: red;">正解　　：　+10 × ' + sei + '</h3> <h3 style="color: yellow;">未選択　：　-5 × ' + mis + '</h3> <h3 style="color: royalblue;">不正解　：　-15 × ' + hus + '</h3> <h3>合計　　：　' + kon + '</h3>';
   let all = document.getElementById('all');
   total += kon;
   
+  if(stage == clmax+1 && kon > 0){
+    clnum++;
+  }
 
   if(high < total){
     localStorage.setItem('highScore', String(total));
@@ -433,25 +468,59 @@ function setup() {
   wmap = [];
   sei = 0, mis = 0, hus = 0, kon = 0;
   tyu = 0;
-  if(men <= 3) stage = 5;
-  else{
-    let random = Math.floor(Math.random() * 1009); // 0から1008までの乱数
-
-    if(random < 256) stage = 5; 
-    else if(random < 448) stage = 6;  // 256 + 192 = 448
-    else if(random < 592) stage = 7;  // 448 + 144 = 592
-    else if(random < 700) stage = 8;  // 592 + 108 = 700
-    else if(random < 781) stage = 9;  // 700 + 81 = 781
-    else if(random < 842) stage = 10; // 781 + 61 = 842
-    else if(random < 888) stage = 11; // 842 + 46 = 888
-    else if(random < 923) stage = 12; // 888 + 35 = 923
-    else if(random < 949) stage = 13; // 923 + 26 = 949
-    else if(random < 969) stage = 14; // 949 + 20 = 969
-    else if(random < 984) stage = 15; // 969 + 15 = 984
-    else if(random < 995) stage = 16; // 984 + 11 = 995
-    else if(random < 1003) stage = 17; // 995 + 8 = 1003
-    else stage = 18;                     // 1003 + 6 = 1009 (random=1003〜1008)
+  if(clnum){
+    clmax++;
+    clnum = 0;
   }
+
+  let random = Math.floor(Math.random() * (clmax-3));
+
+  console.log(random);
+  switch(random){
+    case 0:
+      stage = 5;
+      break;
+    case 1:
+      stage = 6;
+      break;
+    case 2:
+      stage = 7;
+      break;
+    case 3:
+      stage = 8;
+      break;
+    case 4:
+      stage = 9;
+      break;
+    case 5:
+      stage = 10;
+      break;
+    case 6:
+      stage = 11;
+      break;
+    case 7:
+      stage = 12;
+      break;
+    case 8:
+      stage = 13;
+      break;
+    case 9:
+      stage = 14;
+      break;
+    case 10:
+      stage = 15;
+      break;
+    case 11:
+      stage = 16;
+      break;
+    case 12:
+      stage = 17;
+      break;
+    case 13:
+      stage = 18;
+      break;
+  }
+  
   for(i=0; i<stage+2; i++){
     obj[i] = [];
     for(j=0; j<stage+2; j++){
@@ -476,10 +545,10 @@ function setup() {
   console.log(num);
   let m = document.getElementById('men');
   m.innerHTML = '<h3 style="text-align: center;">ステージ' + men + '</men>';
-  let s = document.getElementById('score');
-  s.innerHTML = '<h3 style="color: red;">正解　：　---</h3> <h3 style="color: yellow;">未選択　：　---</h3> <h3 style="color: blue;">不正解　：　---</h3> <h3>今回の得点　：　---</h3>'
+  let s = document.getElementById('scr');
+  s.innerHTML = '<h3 style="color: red;">正解　　：　---</h3> <h3 style="color: yellow;">未選択　：　---</h3> <h3 style="color: royalblue;">不正解　：　---</h3> <h3>合計　　：　---</h3>'
   let sub = document.getElementById('submit');
-  sub.innerHTML = 'これで確定';
+  sub.innerHTML = '確定';
   sub.addEventListener('click', end);
   remove();
   create();
@@ -506,11 +575,33 @@ function end(){
   }
 }
 
+function chc(ele, tag){
+  ele.classList.toggle(tag);
+}
+
 async function gs(){
   const game = document.getElementById('game');
   const title = document.getElementById('title');
   title.style.display = 'none';
   game.style.display = 'block';
+
+  let element = document.getElementById('sel').children[0];
+  element.classList.add('pen-s');
+
+  element.addEventListener('click', () => {
+    let se = document.getElementById('sel').children[0];
+    let se2 = document.getElementById('sel').children[1];
+    se.classList.add('pen-s');
+    se2.classList.remove('fla-s');
+  });
+  element = document.getElementById('sel').children[1];
+  element.addEventListener('click', () => {
+    let se = document.getElementById('sel').children[1];
+    let se2 = document.getElementById('sel').children[0];
+    se.classList.add('fla-s');
+    se2.classList.remove('pen-s');
+  });
+
   let go = document.getElementById('over');
   go.style.display = 'none';
   await delay(1000);
@@ -522,16 +613,22 @@ function title(){
   const title = document.getElementById('title');
   game.style.display = 'none';
   title.style.display = 'flex';
+  /*テスト
+  title.style.display = 'none';
+  game.style.display = 'block';
+  */
+
   const st = document.getElementById('st');
   st.addEventListener('click', gs);
   const highScore = localStorage.getItem('highScore');
   if(highScore != null){
     high = parseInt(highScore);
     let all = document.getElementById('all');
-    all.innerHTML = '<h3>総合得点　：　0</h3> <h3>最高記録　：　' + high + '</h3>';
+    all.innerHTML = '<h3>総合得点　：　20</h3> <h3>最高記録　：　' + high + '</h3>';
   }
   else{
-    high = 0;
+    high = 20;
+    localStorage.setItem('highScore', String(high));
   }
 }
 
