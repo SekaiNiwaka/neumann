@@ -7,9 +7,11 @@ let men = 1;
 let tyu = 0;
 let over = 0;
 let sei = 0, mis = 0, hus = 0, kon = 0, total = 20, high = 20;
+let tb = 0;
 let timerId;
 let clickok = false;
 let clmax = 4, clnum = 0;
+let remainMSec, remainSec = 50;
 
 let obj = [];
 for(i=0; i<stage+2; i++){
@@ -126,7 +128,7 @@ async function create() {
     for(j=0; j<stage; j++){
       //今日ここから
       random = Math.floor(Math.random() * 10);
-      if(random <= 8){
+      if(random <= 7){
         element = document.createElement('button');
         element.style.height = 100/(stage+2) + '%';
         element.style.width = 100/(stage+2) + '%';
@@ -137,7 +139,12 @@ async function create() {
           random = 8;
         }
         else{
-          random = Math.floor(Math.random() *  Math.round(stage/2-1));
+          if(stage-1 >= 8){
+            random = Math.floor(Math.random() * 8);
+          }
+          else{
+            random = Math.floor(Math.random() * stage-1);
+          }
         }
         
         switch(random){
@@ -288,24 +295,11 @@ function label() {
         one.classList.remove('flag');
       }
     };
-    const flag = () => {
-      if(clickok){
-        one.classList.toggle('flag');
-        one.classList.remove('checked');
-      }
-    }
     one.addEventListener('keydown', (event) => {
       event.preventDefault();
     });
-    if(document.getElementsByClassName('pen-s') != null)
-    {
-      one.addEventListener('click', set);
-      one.addEventListener('contextmenu', set);
-    }
-    else{
-      one.addEventListener('click', flag);
-      one.addEventListener('contextmenu', flag);
-    }
+    one.addEventListener('click', set);
+    one.addEventListener('contextmenu', set);
   })
   clickok = true;
   const totalTime = stage * 10000;
@@ -314,8 +308,8 @@ function label() {
     const currentTime = Date.now();
     const diff = currentTime - oldTime;
 
-    const remainMSec = totalTime - diff;
-    const remainSec = Math.ceil(remainMSec / 1000);
+    remainMSec = totalTime - diff + tb*1000;
+    remainSec = Math.ceil(remainMSec / 1000);
 
     let label = remainSec;
 
@@ -380,7 +374,13 @@ function result(){
       }
     }
   }
-  kon = sei*10 - mis*5 - hus*15;
+  kon = sei*10 - mis*5 - hus*15 -tb;
+  if(sei >= 1 && mis == 0 && hus == 0){
+    kon *= 2;
+    let p = document.getElementById('per');
+    p.innerText = 'パーフェクト　：　×2';
+    p.style.color = '#00ff00';
+  }
   let s = document.getElementById('scr');
   s.innerHTML = '<h3 style="color: red;">正解　　：　+10 × ' + sei + '</h3> <h3 style="color: yellow;">未選択　：　-5 × ' + mis + '</h3> <h3 style="color: royalblue;">不正解　：　-15 × ' + hus + '</h3> <h3>合計　　：　' + kon + '</h3>';
   let all = document.getElementById('all');
@@ -453,13 +453,16 @@ function explore(i, j, di, dj) {
 
 
 document.addEventListener('DOMContentLoaded', function() {
+    window.addEventListener('resize', () => {
+      const cant = document.getElementById('cant');
+      if(window.innerWidth <= 1.4*window.innerHeight){
+        cant.style.display = 'flex';
+      }
+      else{
+        cant.style.display = 'none';
+      }
+    });
     title(); 
-});
-
-document.addEventListener('keydown', (event) => {
-  if(event.key === 'Enter'){
-
-  }
 });
 
 
@@ -467,6 +470,11 @@ document.addEventListener('keydown', (event) => {
 function setup() {
   wmap = [];
   sei = 0, mis = 0, hus = 0, kon = 0;
+  tb = 0;
+  zik.innerText = '時間点　：　0';
+  zik.style.color = 'gray';
+  let p = document.getElementById('per');
+  p.style.color = 'gray';
   tyu = 0;
   if(clnum){
     clmax++;
@@ -474,7 +482,6 @@ function setup() {
   }
 
   let random = Math.floor(Math.random() * (clmax-3));
-
   console.log(random);
   switch(random){
     case 0:
@@ -546,12 +553,35 @@ function setup() {
   let m = document.getElementById('men');
   m.innerHTML = '<h3 style="text-align: center;">ステージ' + men + '</men>';
   let s = document.getElementById('scr');
-  s.innerHTML = '<h3 style="color: red;">正解　　：　---</h3> <h3 style="color: yellow;">未選択　：　---</h3> <h3 style="color: royalblue;">不正解　：　---</h3> <h3>合計　　：　---</h3>'
+  s.innerHTML = '<h3 style="color: red;">正解　　：　---</h3> <h3 style="color: yellow;">未選択　：　---</h3> <h3 style="color: royalblue;">不正解　：　---</h3> <h3>合計　　：　---</h3>';
+  let tim = document.getElementById('tim');
+  tim.addEventListener('click', plus);
   let sub = document.getElementById('submit');
   sub.innerHTML = '確定';
   sub.addEventListener('click', end);
   remove();
   create();
+}
+
+function plus(){
+  if(!tyu && clickok){
+    tb += 10;
+    let zik = document.getElementById('zik');
+    zik.innerText = '時間点　：　' + (-tb);
+    zik.style.color = '#00ff00';
+    remainMSec += 10000;
+    remainSec += 10;
+    document.querySelector('header').innerHTML = remainSec;
+    if(remainSec >= 6){
+      document.querySelector('header').id = 'none';
+    }
+    else if(remainSec <= 5){
+      document.querySelector('header').id = 'limit';
+    }
+    document.querySelector('header')
+    let s = document.getElementById('scr');
+    s.innerHTML = '<h3 style="color: red;">正解　　：　---</h3> <h3 style="color: yellow;">未選択　：　---</h3> <h3 style="color: royalblue;">不正解　：　---</h3> <h3>合計　　：　' + (-tb) + '</h3>';
+  }
 }
 
 function end(){
@@ -585,23 +615,6 @@ async function gs(){
   title.style.display = 'none';
   game.style.display = 'block';
 
-  let element = document.getElementById('sel').children[0];
-  element.classList.add('pen-s');
-
-  element.addEventListener('click', () => {
-    let se = document.getElementById('sel').children[0];
-    let se2 = document.getElementById('sel').children[1];
-    se.classList.add('pen-s');
-    se2.classList.remove('fla-s');
-  });
-  element = document.getElementById('sel').children[1];
-  element.addEventListener('click', () => {
-    let se = document.getElementById('sel').children[1];
-    let se2 = document.getElementById('sel').children[0];
-    se.classList.add('fla-s');
-    se2.classList.remove('pen-s');
-  });
-
   let go = document.getElementById('over');
   go.style.display = 'none';
   await delay(1000);
@@ -611,8 +624,16 @@ async function gs(){
 function title(){
   const game = document.getElementById('game');
   const title = document.getElementById('title');
-  game.style.display = 'none';
+  const cant = document.getElementById('cant');
+  game.style.display = 'block';
   title.style.display = 'flex';
+  if(window.innerWidth <= 1.4*window.innerHeight)
+  {
+    cant.style.display = 'flex';
+  }
+  else{
+    cant.style.display = 'none';
+  }
   /*テスト
   title.style.display = 'none';
   game.style.display = 'block';

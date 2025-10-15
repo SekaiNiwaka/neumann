@@ -13,8 +13,22 @@ button {
     padding: 0;
 }
 
+#cant{
+    position: absolute;
+    height: 100svh;
+    width: 100svw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3vh; 
+    color: white;
+    text-shadow: 0 0 5px #3bf2ff, 0 0 15px #3bf2ff, 0 0 25px #3bf2ff;
+    z-index: 9999;
+    background-color: black;
+}
+
 #scr{
-    margin-bottom: 5svh;
+    margin-bottom: 1svh;
 }
 
 body {
@@ -27,71 +41,15 @@ body {
 }
 
 #title {
+    background-color: black;
+    position: absolute;
     height: 100svh;
     width: 100vw;
     display: flex;
     flex-flow: column;
     justify-content: center;
     align-items: center;
-}
-
-#des{
-    height: 40svh;
-    width: 30svh;
-}
-
-#sel{
-    padding-top: 2svh;
-    height: 5svh;
-    width: 30svh;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    row-gap: 1svh;
-}
-
-.pen, .fla, .tim, .pen-s, .fla-s{
-    height: 6svh;
-    width: 12svh;
-    margin: 1svh;
-    background-color: black;
-    border-style: solid;
-    border-radius: 1svh;
-    border-color: white;
-    box-shadow: 0 0 4px white, 0 0 10px white;
-    border-width: 0.5svh;
-    font-size: 2.5svh;
-    margin: 0 1svh;
-}
-
-.pen{
-    color: #00ff00;
-}
-
-.pen-s{
-    border-color: #00ff00;
-    box-shadow: 0 0 4px #00ff00, 0 0 10px #00ff00;
-}
-
-.fla-s{
-    border-color: palevioletred;
-    box-shadow: 0 0 4px palevioletred, 0 0 10px palevioletred;
-}
-
-.fla{
-    color: palevioletred;
-}
-
-.tim{
-    color: white;
-    width: 26svh;
-    border-color: #338cff;
-    box-shadow: 0 0 4px #338cff, 0 0 10px #338cff;
-    border-radius: 100svh;
-}
-
-.pen:hover, .fla:hover, .tim:hover {
-    background-color: rgba(255, 140, 0, 0.1);
+    z-index: 1;
 }
 
 
@@ -114,12 +72,17 @@ h3{
     font-size: 2.5svh;
 }
 
+h4{
+    font-size: 1.5svh;
+    color: gray;
+}
+
 span {
     color: #ff4545;
     text-shadow: 0 0 5px #ff4141, 0 0 15px #ff4141, 0 0 25px #ff4141;
 }
 
-#st, #de, #submit {
+#st, #de, #submit, #tim {
     border-style: solid;
     border-width: 0.5svh;
     border-radius: 100svh;
@@ -131,6 +94,15 @@ span {
     color: #E0E0E0;
     box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
     transition: all 0.3s ease-in-out;
+}
+
+#tim{
+    border-color: #3a8fff;
+    box-shadow: 0 0 4px #3a8fff, 0 0 10px #3a8fff;
+    font-size: 2.5svh;
+    width: 26svh;
+    height: 6svh;
+    margin-bottom: 3vh;
 }
 
 #st {
@@ -162,7 +134,7 @@ span {
     margin-bottom: 0;
 }
 
-#submit:hover {
+#submit:hover, #tim:hover {
     background-color: rgba(255, 140, 0, 0.1);
 }
 
