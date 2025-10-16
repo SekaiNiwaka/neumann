@@ -52,7 +52,11 @@ body {
     z-index: 1;
 }
 
-
+#ket{
+    display: flex;
+    flex-flow: column;
+    margin-top: 3svh;
+}
 
 #all{
     margin-bottom: 5svh;
