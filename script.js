@@ -374,7 +374,7 @@ function result(){
       }
     }
   }
-  kon = sei*10 - mis*5 - hus*15 -tb;
+  kon = sei*10 - mis*5 - hus*15 - 2*tb;
   if(sei >= 1 && mis == 0 && hus == 0){
     kon *= 2;
     let p = document.getElementById('per');
@@ -567,7 +567,7 @@ function plus(){
   if(!tyu && clickok){
     tb += 10;
     let zik = document.getElementById('zik');
-    zik.innerText = '時間点　：　' + (-tb);
+    zik.innerText = '時間点　：　' + (-2*tb);
     zik.style.color = '#00ff00';
     remainMSec += 10000;
     remainSec += 10;
@@ -580,7 +580,7 @@ function plus(){
     }
     document.querySelector('header')
     let s = document.getElementById('scr');
-    s.innerHTML = '<h3 style="color: red;">正解　　：　---</h3> <h3 style="color: yellow;">未選択　：　---</h3> <h3 style="color: royalblue;">不正解　：　---</h3> <h3>合計　　：　' + (-tb) + '</h3>';
+    s.innerHTML = '<h3 style="color: red;">正解　　：　---</h3> <h3 style="color: yellow;">未選択　：　---</h3> <h3 style="color: royalblue;">不正解　：　---</h3> <h3>合計　　：　' + (-2*tb) + '</h3>';
   }
 }
 
