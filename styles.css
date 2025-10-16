@@ -73,7 +73,7 @@ h1 {
 }
 
 h3{
-    font-size: 2.5svh;
+    font-size: 2svh;
 }
 
 h4{
@@ -100,13 +100,18 @@ span {
     transition: all 0.3s ease-in-out;
 }
 
+#ket{
+    justify-content: center;
+    align-items: center;
+}
+
 #tim{
     border-color: #3a8fff;
     box-shadow: 0 0 4px #3a8fff, 0 0 10px #3a8fff;
-    font-size: 2.5svh;
-    width: 26svh;
-    height: 6svh;
-    margin-bottom: 3vh;
+    font-size: 2svh;
+    width: 24svh;
+    height: 5svh;
+    margin-bottom: 1.5vh;
 }
 
 #st {
@@ -132,9 +137,9 @@ span {
 #submit{
     border-color: #fffb00;
     box-shadow: 0 0 4px #fffb00, 0 0 10px #fffb00;
-    font-size: 2.5svh;
-    width: 26svh;
-    height: 6svh;
+    font-size: 2svh;
+    width: 24svh;
+    height: 5svh;
     margin-bottom: 0;
 }
 
