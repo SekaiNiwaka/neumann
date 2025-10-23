@@ -69,7 +69,7 @@ body {
 }
 
 #all{
-    margin-bottom: 5svh;
+    margin: 0;
 }
 
 a{
@@ -89,7 +89,7 @@ h1 {
 }
 
 h3{
-    font-size: 2.5svh;
+    font-size: 2.25svh;
 }
 
 h4{
