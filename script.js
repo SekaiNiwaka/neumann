@@ -645,7 +645,7 @@ async function gs(){
     const title = document.getElementById('title');
     title.classList.add('fade-out');
     title.addEventListener('transitionend', () => {
-      title.style.display = 'none';
+      title.style.visibility = 'hidden';
     });
     game.style.display = 'block';
     let tim = document.getElementById('tim');
