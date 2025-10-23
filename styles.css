@@ -29,6 +29,7 @@ button {
 
 .fade-out{
     opacity: 0;
+    visibility: hidden;
 }
 
 #scr{
@@ -58,7 +59,7 @@ body {
     justify-content: center;
     align-items: center;
     z-index: 1;
-    transition: opacity 1.5s ease-out;
+    transition: opacity 1.5s ease-out, visibility 0s 1.5s;
 }
 
 #ket{
