@@ -14,7 +14,7 @@ button {
 }
 
 #cant{
-    position: absolute;
+    position: fixed;
     height: 100svh;
     width: 100svw;
     display: flex;
@@ -25,6 +25,10 @@ button {
     text-shadow: 0 0 5px #3bf2ff, 0 0 15px #3bf2ff, 0 0 25px #3bf2ff;
     z-index: 9999;
     background-color: black;
+}
+
+.fade-out{
+    opacity: 0;
 }
 
 #scr{
@@ -39,6 +43,9 @@ body {
     user-select: none;
     cursor: default;
     touch-action: none;
+    overflow: hidden; /* スクロールバーを非表示にする */
+    height: 100svh;  /* bodyの高さと幅を画面サイズに固定する */
+    width: 100svw;
 }
 
 #title {
@@ -51,6 +58,7 @@ body {
     justify-content: center;
     align-items: center;
     z-index: 1;
+    transition: opacity 1.5s ease-out;
 }
 
 #ket{
@@ -61,6 +69,12 @@ body {
 
 #all{
     margin-bottom: 5svh;
+}
+
+a{
+    text-align: center;
+    font-size: 2svh;
+    color: yellow;
 }
 
 h1 {
@@ -74,12 +88,17 @@ h1 {
 }
 
 h3{
-    font-size: 2svh;
+    font-size: 2.5svh;
 }
 
 h4{
-    font-size: 1.5svh;
+    font-size: 2svh;
     color: gray;
+}
+
+h5{
+    font-size: 1.5svh;
+    margin: 0;
 }
 
 span {
@@ -87,7 +106,7 @@ span {
     text-shadow: 0 0 5px #ff4141, 0 0 15px #ff4141, 0 0 25px #ff4141;
 }
 
-#st, #de, #submit, #tim {
+#st, #de, #un, #submit, #tim {
     border-style: solid;
     border-width: 0.5svh;
     border-radius: 100svh;
@@ -98,7 +117,7 @@ span {
     margin-bottom: 20px;
     color: #E0E0E0;
     box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
-    transition: all 0.3s ease-in-out;
+    transition: all 0.1s ease-in-out;
 }
 
 #ket{
@@ -110,7 +129,7 @@ span {
     border-color: #3a8fff;
     box-shadow: 0 0 4px #3a8fff, 0 0 10px #3a8fff;
     font-size: 2svh;
-    width: 24svh;
+    width: 85%;
     height: 5svh;
     margin-bottom: 1.5vh;
 }
@@ -135,11 +154,21 @@ span {
     box-shadow: 0 0 10px #FF8C00, 0 0 20px #FF8C00, 0 0 30px #FF8C00;
 }
 
+#un{
+    border-color: #31ffd2;
+    box-shadow: 0 0 8px #31ffd2, 0 0 15px #31ffd2;
+}
+
+#un:hover {
+    background-color: rgba(255, 140, 0, 0.1);
+    box-shadow: 0 0 10px #31ffd2, 0 0 20px #31ffd2, 0 0 30px #31ffd2;
+}
+
 #submit{
     border-color: #fffb00;
     box-shadow: 0 0 4px #fffb00, 0 0 10px #fffb00;
     font-size: 2svh;
-    width: 24svh;
+    width: 85%;
     height: 5svh;
     margin-bottom: 0;
 }
@@ -148,7 +177,21 @@ span {
     background-color: rgba(255, 140, 0, 0.1);
 }
 
+.nara{
+    display: flex;
+}
 
+.tiles{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 2svh 0;
+}
+
+.walls{
+    display: flex;
+    margin-top: 2svh;
+}
 
 #waku {
     display: flex;
@@ -163,13 +206,15 @@ span {
 .left, .right {
     border: 3px solid #ffffff;
     height: 80svh;
-    width: 30svh;
+    aspect-ratio: 3.5/8;
 }
 
 .left {
+    position: relative;
     border-right: none;
     display: flex;
     flex-flow: column;
+    padding: 0 2svh;
 }
 
 .right {
@@ -214,11 +259,11 @@ main {
     width: 100%;
 }
 
-.zero, .two, .three, .four, .five, .six, .seven, .eight, .nine, .kyu, .han, .loop, .jump {
+.zero, .two, .three, .four, .five, .six, .seven, .eight, .nine, .kyu, .han, .loop, .jump, .up, .ss{
     border-style: solid;
     border-width: 1px;
     border-color: #555555;
-    background-color: #0E0E1A;
+    background-color: #0e0e1a00;
     font-size: 2.5svh;
     width: 5%;
     height: 5%;
@@ -229,10 +274,23 @@ main {
     text-shadow: 0 0 2px currentColor;
 }
 
+.ss{
+    height: 1.5svh;
+    width: 1.5svh;
+    font-size: 1.5svh;
+}
+
+.ws{
+    height: 3svh;
+    width: 3svh;
+    font-size: 2.5svh;
+}
+
 .two {
     color: #4FC3F7;
     text-shadow: 0 0 5px #4FC3F7, 0 0 10px #4FC3F7, 0 0 15px rgba(20, 102, 255, 0.7);
 }
+
 
 .three {
     color: #F44336;

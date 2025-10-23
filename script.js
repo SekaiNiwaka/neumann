@@ -9,9 +9,10 @@ let over = 0;
 let sei = 0, mis = 0, hus = 0, kon = 0, total = 20, high = 20;
 let tb = 0;
 let timerId;
-let clickok = false;
+let clickok = true;
 let clmax = 4, clnum = 0;
 let remainMSec, remainSec = 50;
+let unlimi = 0;
 
 let obj = [];
 for(i=0; i<stage+2; i++){
@@ -197,7 +198,7 @@ async function create() {
         obj[i+1][j+1] = element;
       }
       else{
-        random = Math.floor(Math.random() * 4);
+        random = Math.floor(Math.random() * 5);
         wall = document.createElement('div');
         wall.style.height = 100/(stage+2) + '%';
         wall.style.width = 100/(stage+2) + '%';
@@ -291,8 +292,12 @@ function label() {
   button.forEach((one) => {
     const set = () => {
       if(clickok){
-        one.classList.toggle('checked');
-        one.classList.remove('flag');
+        if(unlimi){
+          one.classList.toggle('checked');
+        }
+        else{
+          one.classList.add('checked');
+        }
       }
     };
     one.addEventListener('keydown', (event) => {
@@ -302,30 +307,32 @@ function label() {
     one.addEventListener('contextmenu', set);
   })
   clickok = true;
-  const totalTime = stage * 10000;
-  const oldTime = Date.now();
-  timerId = setInterval(() => {
-    const currentTime = Date.now();
-    const diff = currentTime - oldTime;
+  if(!unlimi){
+    const totalTime = stage**2 * 2000;
+    const oldTime = Date.now();
+    timerId = setInterval(() => {
+      const currentTime = Date.now();
+      const diff = currentTime - oldTime;
 
-    remainMSec = totalTime - diff + tb*1000;
-    remainSec = Math.ceil(remainMSec / 1000);
+      remainMSec = totalTime - diff + tb*1000;
+      remainSec = Math.ceil(remainMSec / 1000);
 
-    let label = remainSec;
+      let label = remainSec;
 
-    if(remainSec <= 5){
-      document.querySelector('header').id = 'limit';
-    }
+      if(remainSec <= 5){
+        document.querySelector('header').id = 'limit';
+      }
 
-    if(remainMSec <= 0){
-      clearInterval(timerId);
-      clickok = false;
-      tyu = 1;
-      result();
-    }
+      if(remainMSec <= 0){
+        clearInterval(timerId);
+        clickok = false;
+        tyu = 1;
+        result();
+      }
 
-    document.querySelector('header').innerHTML = label;
-  }, 1000);
+      document.querySelector('header').innerHTML = label;
+    }, 1000);
+  }
 }
 
 
@@ -391,7 +398,8 @@ function result(){
   }
 
   if(high < total){
-    localStorage.setItem('highScore', String(total));
+    if(unlimi) localStorage.setItem('highScore-s', String(total));
+    else localStorage.setItem('highScore', String(total));
     high = total;
   }
   all.innerHTML = '<h3>総合得点　：　' + total + '</h3> <h3>最高記録　：　' + high + '</h3>';
@@ -455,7 +463,7 @@ function explore(i, j, di, dj) {
 document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('resize', () => {
       const cant = document.getElementById('cant');
-      if(window.innerWidth <= 1.4*window.innerHeight){
+      if(window.innerWidth <= 1.5*window.innerHeight){
         cant.style.display = 'flex';
       }
       else{
@@ -480,10 +488,7 @@ function setup() {
     clmax++;
     clnum = 0;
   }
-
-  let random = Math.floor(Math.random() * (clmax-3));
-  console.log(random);
-  switch(random){
+  switch(clmax-4){
     case 0:
       stage = 5;
       break;
@@ -523,7 +528,7 @@ function setup() {
     case 12:
       stage = 17;
       break;
-    case 13:
+    default:
       stage = 18;
       break;
   }
@@ -547,11 +552,13 @@ function setup() {
     }
   }
   document.querySelector('header').id = 'none';
-  document.querySelector('header').innerHTML = stage*10;
+  if(unlimi) document.querySelector('header').innerHTML = "∞";
+  else document.querySelector('header').innerHTML = stage**2 * 2;
+  
 
   console.log(num);
   let m = document.getElementById('men');
-  m.innerHTML = '<h3 style="text-align: center;">ステージ' + men + '</men>';
+  m.innerHTML = '<h3 style="text-align: center;">レベル' + (clmax-3) + '</men>';
   let s = document.getElementById('scr');
   s.innerHTML = '<h3 style="color: red;">正解　　：　---</h3> <h3 style="color: yellow;">未選択　：　---</h3> <h3 style="color: royalblue;">不正解　：　---</h3> <h3>合計　　：　---</h3>';
   let tim = document.getElementById('tim');
@@ -609,16 +616,52 @@ function chc(ele, tag){
   ele.classList.toggle(tag);
 }
 
-async function gs(){
-  const game = document.getElementById('game');
-  const title = document.getElementById('title');
-  title.style.display = 'none';
-  game.style.display = 'block';
+function gsu(){
+  unlimi = 1;
+}
 
-  let go = document.getElementById('over');
-  go.style.display = 'none';
-  await delay(1000);
-  setup();
+async function gs(){
+  if(clickok){
+    clickok = false;
+    let highScore;
+    if(unlimi){
+      highScore = localStorage.getItem('highScore-s');
+    }
+    else{
+      highScore = localStorage.getItem('highScore');
+    }
+    
+    if(highScore != null){
+      high = parseInt(highScore);
+      let all = document.getElementById('all');
+      all.innerHTML = '<h3>総合得点　：　20(初)</h3> <h3>最高記録　：　' + high + '</h3>';
+    }
+    else{
+      high = 20;
+      if(unlimi) localStorage.setItem('highScore-s', String(high));
+      else localStorage.setItem('highScore', String(high));
+    }
+    const game = document.getElementById('game');
+    const title = document.getElementById('title');
+    title.classList.add('fade-out');
+    title.addEventListener('transitionend', () => {
+      title.style.display = 'none';
+    });
+    game.style.display = 'block';
+    let tim = document.getElementById('tim');
+    if(unlimi){
+      tim.style.display = 'none';
+    }
+
+    let go = document.getElementById('over');
+    go.style.display = 'none';
+    await delay(1000);
+    setup();
+  }
+}
+
+function des(){
+  if(clickok) window.open("description.pdf", '_blank');
 }
 
 function title(){
@@ -627,7 +670,7 @@ function title(){
   const cant = document.getElementById('cant');
   game.style.display = 'block';
   title.style.display = 'flex';
-  if(window.innerWidth <= 1.4*window.innerHeight)
+  if(window.innerWidth <= 1.5*window.innerHeight)
   {
     cant.style.display = 'flex';
   }
@@ -641,16 +684,11 @@ function title(){
 
   const st = document.getElementById('st');
   st.addEventListener('click', gs);
-  const highScore = localStorage.getItem('highScore');
-  if(highScore != null){
-    high = parseInt(highScore);
-    let all = document.getElementById('all');
-    all.innerHTML = '<h3>総合得点　：　20</h3> <h3>最高記録　：　' + high + '</h3>';
-  }
-  else{
-    high = 20;
-    localStorage.setItem('highScore', String(high));
-  }
+  const de = document.getElementById('de');
+  de.addEventListener('click', des);
+  const un = document.getElementById('un');
+  un.addEventListener('click', gsu);
+  un.addEventListener('click', gs);
 }
 
 

@@ -13,7 +13,8 @@
         <div id="title">
             <h1>NEUMANN <span>ZERO</span></h1>
             
-            <button id="st">GAME START</button>
+            <button id="st">NORMAL MODE</button>
+            <button id="un">UNLIMITED MODE</button>
             <button id="de">DESCRIPTION</button>
             
         </div>
@@ -22,12 +23,156 @@
         </div>
         <div id="game">
             <header>
-                50
+                
             </header>
 
             <main>
                 <div class="left">
-                    
+                    <h3 style="text-align: center; margin: 1svh;">【簡易説明】</h3>
+                    <h5>マスに書いてある数字の分だけ、4方向にすごろくのように進みます。<br>止まったマスが爆発マスになります。</h5>
+                    <div class="nara">
+                        <div class="tiles">
+                            <div class="zero ss"></div>
+                            <div class="zero ss"></div>
+                            <div class="zero ss"></div>
+                            <div class="zero ss"></div>
+                            <div class="zero ss"></div>
+                            <div class="zero ss"></div>
+                            <div class="zero ss"></div>
+                            <div class="break"></div>
+                            <div class="zero ss"></div>
+                            <div class="zero ss"></div>
+                            <div class="zero ss"></div>
+                            <div class="zero ss exploded"></div>
+                            <div class="zero ss"></div>
+                            <div class="zero ss"></div>
+                            <div class="zero ss"></div>
+                            <div class="break"></div>
+                            <div class="zero ss"></div>
+                            <div class="zero ss"></div>
+                            <div class="zero ss"></div>
+                            <div class="zero ss"></div>
+                            <div class="zero ss"></div>
+                            <div class="zero ss"></div>
+                            <div class="zero ss"></div>
+                            <div class="break"></div>
+                            <div class="zero ss"></div>
+                            <div class="zero ss exploded"></div>
+                            <div class="zero ss"></div>
+                            <div class="two ss">2</div>
+                            <div class="zero ss"></div>
+                            <div class="zero ss exploded"></div>
+                            <div class="zero ss"></div>
+                            <div class="break"></div>
+                            <div class="zero ss"></div>
+                            <div class="zero ss"></div>
+                            <div class="zero ss"></div>
+                            <div class="zero ss"></div>
+                            <div class="zero ss"></div>
+                            <div class="zero ss"></div>
+                            <div class="zero ss"></div>
+                            <div class="break"></div>
+                            <div class="zero ss"></div>
+                            <div class="zero ss"></div>
+                            <div class="zero ss"></div>
+                            <div class="zero ss exploded"></div>
+                            <div class="zero ss"></div>
+                            <div class="zero ss"></div>
+                            <div class="zero ss"></div>
+                            <div class="break"></div>
+                            <div class="zero ss"></div>
+                            <div class="zero ss"></div>
+                            <div class="zero ss"></div>
+                            <div class="zero ss"></div>
+                            <div class="zero ss"></div>
+                            <div class="zero ss"></div>
+                            <div class="zero ss"></div>
+                        </div>
+                        
+                        <div class="tiles">
+                            <div class="zero ss"></div>
+                            <div class="zero ss"></div>
+                            <div class="zero ss"></div>
+                            <div class="zero ss exploded"></div>
+                            <div class="zero ss"></div>
+                            <div class="zero ss"></div>
+                            <div class="zero ss"></div>
+                            <div class="break"></div>
+                            <div class="zero ss"></div>
+                            <div class="zero ss"></div>
+                            <div class="zero ss"></div>
+                            <div class="zero ss"></div>
+                            <div class="zero ss"></div>
+                            <div class="zero ss"></div>
+                            <div class="zero ss"></div>
+                            <div class="break"></div>
+                            <div class="zero ss"></div>
+                            <div class="zero ss"></div>
+                            <div class="zero ss"></div>
+                            <div class="zero ss"></div>
+                            <div class="zero ss"></div>
+                            <div class="zero ss"></div>
+                            <div class="zero ss"></div>
+                            <div class="break"></div>
+                            <div class="zero ss exploded"></div>
+                            <div class="zero ss"></div>
+                            <div class="zero ss"></div>
+                            <div class="three ss">3</div>
+                            <div class="zero ss"></div>
+                            <div class="zero ss"></div>
+                            <div class="zero ss exploded"></div>
+                            <div class="break"></div>
+                            <div class="zero ss"></div>
+                            <div class="zero ss"></div>
+                            <div class="zero ss"></div>
+                            <div class="zero ss"></div>
+                            <div class="zero ss"></div>
+                            <div class="zero ss"></div>
+                            <div class="zero ss"></div>
+                            <div class="break"></div>
+                            <div class="zero ss"></div>
+                            <div class="zero ss"></div>
+                            <div class="zero ss"></div>
+                            <div class="zero ss"></div>
+                            <div class="zero ss"></div>
+                            <div class="zero ss"></div>
+                            <div class="zero ss"></div>
+                            <div class="break"></div>
+                            <div class="zero ss"></div>
+                            <div class="zero ss"></div>
+                            <div class="zero ss"></div>
+                            <div class="zero ss exploded"></div>
+                            <div class="zero ss"></div>
+                            <div class="zero ss"></div>
+                            <div class="zero ss"></div>
+                            <div class="break"></div>
+                            
+                        </div>
+                    </div>
+                    <h5><u>爆発マスでないところ</u>をクリックしてください。<br>取り消しはできないので気を付けて。</h5>
+
+                    <div class="walls">
+                        <div class="kyu ws"></div>
+                        <h5>「吸収マス」</h5>
+                    </div>
+                    <h5>数える途中でこのマスを踏むと、その方向への数字の効力は失われます。</h5>
+                    <div class="walls">
+                        <div class="han ws"></div>
+                        <h5>「反射マス」</h5>
+                    </div>
+                    <h5>数える途中でこのマスを踏むと、数字消費なしで一マス戻り、進行方向を逆にします。</h5>
+                    <div class="walls">
+                        <div class="loop ws"></div>
+                        <h5>「ワープマス」</h5>
+                    </div>
+                    <h5>数える途中でこのマスを踏むと、数字消費なしで反対の端のマスに移動します。</h5>
+                    <div class="walls">
+                        <div class="jump ws"></div>
+                        <h5>「ジャンプマス」</h5>
+                    </div>
+                    <h5>数える途中でこのマスを踏むと、数字消費なしで一マス進みます。</h5>
+
+                    <a href="description.pdf" target="_blank">PDFの説明書はこちら</a>
                 </div>
 
                 <div class="line"></div>
@@ -37,11 +182,11 @@
                 </div>
                 <div class="right">
                     <div id="all">
-                        <h3>総合得点　：　20</h3>
+                        <h3>総合得点　：　20(初)</h3>
                         <h3>最高記録　：　20</h3>
                     </div>
                     <div id="men">
-                        <h3 style="text-align: center;">ステージ1</h3>
+                        <h3 style="text-align: center;">レベル1</h3>
                     </div>
                     <div id="scr">
                         <h3 style="color: red;">正解　　：　---</h3>
