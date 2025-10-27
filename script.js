@@ -459,7 +459,7 @@ function explore(i, j, di, dj) {
 document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('resize', () => {
       const cant = document.getElementById('cant');
-      if(window.innerWidth <= 1.5*window.innerHeight){
+      if(window.innerWidth <= 1.4*window.innerHeight){
         cant.style.display = 'flex';
       }
       else{
@@ -663,7 +663,7 @@ function title(){
   const cant = document.getElementById('cant');
   game.style.display = 'block';
   title.style.display = 'flex';
-  if(window.innerWidth <= 1.5*window.innerHeight)
+  if(window.innerWidth <= 1.4*window.innerHeight)
   {
     cant.style.display = 'flex';
   }
