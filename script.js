@@ -292,12 +292,7 @@ function label() {
   button.forEach((one) => {
     const set = () => {
       if(clickok){
-        if(unlimi){
-          one.classList.toggle('checked');
-        }
-        else{
-          one.classList.add('checked');
-        }
+        one.classList.toggle('checked');
       }
     };
     one.addEventListener('keydown', (event) => {
@@ -308,7 +303,7 @@ function label() {
   })
   clickok = true;
   if(!unlimi){
-    const totalTime = stage**2 * 2000;
+    const totalTime = stage**2 * 2400;
     const oldTime = Date.now();
     timerId = setInterval(() => {
       const currentTime = Date.now();
@@ -325,6 +320,7 @@ function label() {
 
       if(remainMSec <= 0){
         clearInterval(timerId);
+        document.querySelector('header').innerHTML = '0';
         clickok = false;
         tyu = 1;
         result();
@@ -553,7 +549,7 @@ function setup() {
   }
   document.querySelector('header').id = 'none';
   if(unlimi) document.querySelector('header').innerHTML = "∞";
-  else document.querySelector('header').innerHTML = stage**2 * 2;
+  else document.querySelector('header').innerHTML = Math.ceil(stage**2 * 2.4);
   
 
   console.log(num);
@@ -574,7 +570,7 @@ function plus(){
   if(!tyu && clickok){
     tb += 10;
     let zik = document.getElementById('zik');
-    zik.innerText = '時間点　：　' + (-2*tb);
+    zik.innerText = '時間点　：　' + (-tb);
     zik.style.color = '#00ff00';
     remainMSec += 10000;
     remainSec += 10;
@@ -587,7 +583,7 @@ function plus(){
     }
     document.querySelector('header')
     let s = document.getElementById('scr');
-    s.innerHTML = '<h3 style="color: red;">正解　　：　---</h3> <h3 style="color: yellow;">未選択　：　---</h3> <h3 style="color: royalblue;">不正解　：　---</h3> <h3>合計　　：　' + (-2*tb) + '</h3>';
+    s.innerHTML = '<h3 style="color: red;">正解　　：　---</h3> <h3 style="color: yellow;">未選択　：　---</h3> <h3 style="color: royalblue;">不正解　：　---</h3> <h3>合計　　：　' + (-tb) + '</h3>';
   }
 }
 
@@ -658,7 +654,7 @@ async function gs(){
 }
 
 function des(){
-  if(clickok) window.open("description.pdf", '_blank');
+  if(clickok) window.open("ノイマン・ゼロ操作説明書.pdf", '_blank');
 }
 
 function title(){

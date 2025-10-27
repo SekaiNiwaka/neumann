@@ -335,27 +335,6 @@ main {
     box-shadow: 0 0 5px #1eff30, 0 0 10px rgba(255, 255, 0, 0.7);
 }
 
-.flag {
-    position: relative;
-    overflow: hidden;
-    /*background-color: #bd000056;*/
-}
-
-.flag::after{
-    background-image: url('flag.png');
-    content: ''; 
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    opacity: 0.5;
-}
-
 .kyu {
     background-color: #004D99;
     box-shadow: inset 0 0 10px #00BFFF, 0 0 10px rgba(0, 191, 255, 0.5);
