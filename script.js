@@ -377,7 +377,7 @@ function result(){
       }
     }
   }
-  kon = sei*10 - mis*5 - hus*15 - 2*tb;
+  kon = sei*10 - mis*5 - hus*15 - tb;
   if(sei >= 1 && mis == 0 && hus == 0){
     kon *= 2;
     let p = document.getElementById('per');
