@@ -140,12 +140,7 @@ async function create() {
           random = 8;
         }
         else{
-          if(stage-1 >= 8){
-            random = Math.floor(Math.random() * 8);
-          }
-          else{
-            random = Math.floor(Math.random() * stage-1);
-          }
+          random = Math.floor(Math.random() * (Math.round(stage/2))-1);
         }
         
         switch(random){
