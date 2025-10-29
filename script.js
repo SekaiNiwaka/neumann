@@ -287,7 +287,7 @@ function label() {
   const button = document.querySelectorAll('.zero, .one, .two, .three, .four, .five, .six, .seven, .eight, .nine');
   button.forEach((one) => {
     const set = () => {
-      if(clickok){
+      if(clickok && !one.classList.contains('ss')){
         one.classList.add('checked');
       }
     };
@@ -578,7 +578,7 @@ function plus(){
     tb += 10;
     let zik = document.getElementById('zik');
     zik.innerText = '時間点　：　' + (-tb);
-    zik.style.color = '#00ff00';
+    zik.style.color = '#ff8800ff';
     remainMSec += 10000;
     remainSec += 10;
     document.querySelector('header').innerHTML = remainSec;
