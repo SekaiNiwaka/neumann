@@ -298,7 +298,7 @@ function label() {
   })
   clickok = true;
   if(!unlimi){
-    const totalTime = stage**2 * 2400;
+    const totalTime = stage**2 * 2000;
     const oldTime = Date.now();
     timerId = setInterval(() => {
       const currentTime = Date.now();
@@ -372,7 +372,7 @@ function result(){
       }
     }
   }
-  kon = sei*10 - mis*5 - hus*15 - tb;
+  kon = sei*10 - mis*5 - hus*15 - 1.5*tb;
   if(sei >= 1 && mis == 0 && hus == 0){
     kon *= 2;
     let p = document.getElementById('per');
@@ -381,29 +381,32 @@ function result(){
   }
   let s = document.getElementById('scr');
   s.innerHTML = '<h3 style="color: red;">正解　　：　+10 × ' + sei + '</h3> <h3 style="color: yellow;">未選択　：　-5 × ' + mis + '</h3> <h3 style="color: royalblue;">不正解　：　-15 × ' + hus + '</h3> <h3>合計　　：　' + kon + '</h3>';
-  let all = document.getElementById('all');
-  total += kon;
-  
-  if(stage == clmax+1 && kon > 0){
-    clnum++;
-  }
 
-  if(high < total){
-    if(unlimi) localStorage.setItem('highScore-s', String(total));
-    else localStorage.setItem('highScore', String(total));
-    high = total;
-  }
-  all.innerHTML = '<h3>総合得点　：　' + total + '</h3> <h3>最高記録　：　' + high + '</h3>';
-  
-  let sub = document.getElementById('submit');
-  sub.innerHTML = '次のステージへ';
-  if(total < 0){
+  if(kon < 0){ 
     over = 1;
     tyu = 1;
     let go = document.getElementById('over');
     go.style.display = 'flex';
     let sub = document.getElementById('submit');
     sub.innerHTML = 'タイトルへ';
+  }
+  else{
+    let all = document.getElementById('all');
+    total += kon;
+    
+    if(stage == clmax+1 && kon >= 0){
+      clnum++;
+    }
+
+    if(high < total){
+      if(unlimi) localStorage.setItem('highScore-s', String(total));
+      else localStorage.setItem('highScore', String(total));
+      high = total;
+    }
+    all.innerHTML = '<h3>総合得点　：　' + total + '</h3> <h3>最高記録　：　' + high + '</h3>';
+    
+    let sub = document.getElementById('submit');
+    sub.innerHTML = '次のステージへ';
   }
 }
 
@@ -544,7 +547,7 @@ function setup() {
   }
   document.querySelector('header').id = 'none';
   if(unlimi) document.querySelector('header').innerHTML = "∞";
-  else document.querySelector('header').innerHTML = Math.ceil(stage**2 * 2.4);
+  else document.querySelector('header').innerHTML = Math.ceil(stage**2 * 2);
   
 
   console.log(num);
@@ -565,7 +568,7 @@ function plus(){
   if(!tyu && clickok){
     tb += 10;
     let zik = document.getElementById('zik');
-    zik.innerText = '時間点　：　' + (-tb);
+    zik.innerText = '時間点　：　' + (-1.5*tb);
     zik.style.color = '#00ff00';
     remainMSec += 10000;
     remainSec += 10;
@@ -578,7 +581,7 @@ function plus(){
     }
     document.querySelector('header')
     let s = document.getElementById('scr');
-    s.innerHTML = '<h3 style="color: red;">正解　　：　---</h3> <h3 style="color: yellow;">未選択　：　---</h3> <h3 style="color: royalblue;">不正解　：　---</h3> <h3>合計　　：　' + (-tb) + '</h3>';
+    s.innerHTML = '<h3 style="color: red;">正解　　：　---</h3> <h3 style="color: yellow;">未選択　：　---</h3> <h3 style="color: royalblue;">不正解　：　---</h3> <h3>合計　　：　' + (-1.5*tb) + '</h3>';
   }
 }
 
