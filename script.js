@@ -13,6 +13,7 @@ let clickok = true;
 let clmax = 4, clnum = 0;
 let remainMSec, remainSec = 50;
 let unlimi = 0;
+let ini = 1;
 
 let obj = [];
 for(i=0; i<stage+2; i++){
@@ -287,7 +288,7 @@ function label() {
   button.forEach((one) => {
     const set = () => {
       if(clickok){
-        one.classList.toggle('checked');
+        one.classList.add('checked');
       }
     };
     one.addEventListener('keydown', (event) => {
@@ -372,7 +373,7 @@ function result(){
       }
     }
   }
-  kon = sei*10 - mis*5 - hus*15 - 1.5*tb;
+  kon = sei*10 - mis*5 - hus*15 - tb;
   if(sei >= 1 && mis == 0 && hus == 0){
     kon *= 2;
     let p = document.getElementById('per');
@@ -380,7 +381,12 @@ function result(){
     p.style.color = '#00ff00';
   }
   let s = document.getElementById('scr');
-  s.innerHTML = '<h3 style="color: red;">正解　　：　+10 × ' + sei + '</h3> <h3 style="color: yellow;">未選択　：　-5 × ' + mis + '</h3> <h3 style="color: royalblue;">不正解　：　-15 × ' + hus + '</h3> <h3>合計　　：　' + kon + '</h3>';
+  if(kon >= 0){
+    s.innerHTML = '<h3 style="color: red;">正解　　：　+10 × ' + sei + '</h3> <h3 style="color: yellow;">未選択　：　-5 × ' + mis + '</h3> <h3 style="color: royalblue;">不正解　：　-15 × ' + hus + '</h3> <h3>今回　　：　' + kon + '</h3>';
+  }
+  else{
+    s.innerHTML = '<h3 style="color: red;">正解　　：　+10 × ' + sei + '</h3> <h3 style="color: yellow;">未選択　：　-5 × ' + mis + '</h3> <h3 style="color: royalblue;">不正解　：　-15 × ' + hus + '</h3> <h3>今回　　：　<span>' + kon + '</span></h3>';
+  }
 
   if(kon < 0){ 
     over = 1;
@@ -390,21 +396,7 @@ function result(){
     let sub = document.getElementById('submit');
     sub.innerHTML = 'タイトルへ';
   }
-  else{
-    let all = document.getElementById('all');
-    total += kon;
-    
-    if(stage == clmax+1 && kon >= 0){
-      clnum++;
-    }
-
-    if(high < total){
-      if(unlimi) localStorage.setItem('highScore-s', String(total));
-      else localStorage.setItem('highScore', String(total));
-      high = total;
-    }
-    all.innerHTML = '<h3>総合得点　：　' + total + '</h3> <h3>最高記録　：　' + high + '</h3>';
-    
+  else{    
     let sub = document.getElementById('submit');
     sub.innerHTML = '次のステージへ';
   }
@@ -470,6 +462,23 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 function setup() {
+  if(!ini){
+    let all = document.getElementById('all');
+    total += kon;
+    
+    if(stage == clmax+1 && kon >= 0){
+      clnum++;
+    }
+
+    if(high < total){
+      if(unlimi) localStorage.setItem('highScore-s', String(total));
+      else localStorage.setItem('highScore', String(total));
+      high = total;
+    }
+    all.innerHTML = '<h3>総合得点　：　' + total + '</h3> <h3>最高記録　：　' + high + '</h3>';
+  }
+  ini = 0;
+
   wmap = [];
   sei = 0, mis = 0, hus = 0, kon = 0;
   tb = 0;
@@ -554,7 +563,7 @@ function setup() {
   let m = document.getElementById('men');
   m.innerHTML = '<h3 style="text-align: center;">レベル' + (clmax-3) + '</men>';
   let s = document.getElementById('scr');
-  s.innerHTML = '<h3 style="color: red;">正解　　：　---</h3> <h3 style="color: yellow;">未選択　：　---</h3> <h3 style="color: royalblue;">不正解　：　---</h3> <h3>合計　　：　---</h3>';
+  s.innerHTML = '<h3 style="color: red;">正解　　：　---</h3> <h3 style="color: yellow;">未選択　：　---</h3> <h3 style="color: royalblue;">不正解　：　---</h3> <h3>今回　　：　---</h3>';
   let tim = document.getElementById('tim');
   tim.addEventListener('click', plus);
   let sub = document.getElementById('submit');
@@ -568,7 +577,7 @@ function plus(){
   if(!tyu && clickok){
     tb += 10;
     let zik = document.getElementById('zik');
-    zik.innerText = '時間点　：　' + (-1.5*tb);
+    zik.innerText = '時間点　：　' + (-tb);
     zik.style.color = '#00ff00';
     remainMSec += 10000;
     remainSec += 10;
@@ -581,7 +590,7 @@ function plus(){
     }
     document.querySelector('header')
     let s = document.getElementById('scr');
-    s.innerHTML = '<h3 style="color: red;">正解　　：　---</h3> <h3 style="color: yellow;">未選択　：　---</h3> <h3 style="color: royalblue;">不正解　：　---</h3> <h3>合計　　：　' + (-1.5*tb) + '</h3>';
+    s.innerHTML = '<h3 style="color: red;">正解　　：　---</h3> <h3 style="color: yellow;">未選択　：　---</h3> <h3 style="color: royalblue;">不正解　：　---</h3> <h3>今回　　：　' + (-tb) + '</h3>';
   }
 }
 
