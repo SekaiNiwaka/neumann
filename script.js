@@ -535,12 +535,6 @@ function setup() {
     case 13:
       stage = 18;
       break;
-    case 14:
-      stage = 19;
-      break;
-    default:
-      stage = 20;
-      break;
   }
   
   for(i=0; i<stage+2; i++){
