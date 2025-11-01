@@ -6,7 +6,7 @@ let stage = 5;
 let men = 1;
 let tyu = 0;
 let over = 0;
-let sei = 0, mis = 0, hus = 0, kon = 0, total = 20, high = 20;
+let sei = 0, mis = 0, hus = 0, kon = 0, total = 0, high = 0;
 let tb = 0;
 let timerId;
 let clickok = true;
@@ -691,6 +691,7 @@ function title(){
   un.addEventListener('click', gsu);
   un.addEventListener('click', gs);
 }
+
 
 
 
