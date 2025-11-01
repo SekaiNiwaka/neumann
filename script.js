@@ -373,7 +373,7 @@ function result(){
       }
     }
   }
-  kon = sei*10 - mis*5 - hus*15 - tb;
+  kon = sei*10 - mis*10 - hus*15 - tb;
   if(sei >= 1 && mis == 0 && hus == 0){
     kon *= 2;
     let p = document.getElementById('per');
@@ -382,10 +382,10 @@ function result(){
   }
   let s = document.getElementById('scr');
   if(kon >= 0){
-    s.innerHTML = '<h3 style="color: red;">正解　　：　+10 × ' + sei + '</h3> <h3 style="color: yellow;">未選択　：　-5 × ' + mis + '</h3> <h3 style="color: royalblue;">不正解　：　-15 × ' + hus + '</h3> <h3>今回　　：　' + kon + '</h3>';
+    s.innerHTML = '<h3 style="color: red;">正解　　：　+10 × ' + sei + '</h3> <h3 style="color: yellow;">未選択　：　-10 × ' + mis + '</h3> <h3 style="color: royalblue;">不正解　：　-15 × ' + hus + '</h3> <h3>今回　　：　' + kon + '</h3>';
   }
   else{
-    s.innerHTML = '<h3 style="color: red;">正解　　：　+10 × ' + sei + '</h3> <h3 style="color: yellow;">未選択　：　-5 × ' + mis + '</h3> <h3 style="color: royalblue;">不正解　：　-15 × ' + hus + '</h3> <h3>今回　　：　<span>' + kon + '</span></h3>';
+    s.innerHTML = '<h3 style="color: red;">正解　　：　+10 × ' + sei + '</h3> <h3 style="color: yellow;">未選択　：　-10 × ' + mis + '</h3> <h3 style="color: royalblue;">不正解　：　-15 × ' + hus + '</h3> <h3>今回　　：　<span>' + kon + '</span></h3>';
   }
 
   if(kon < 0){ 
@@ -491,6 +491,7 @@ function setup() {
     clmax++;
     clnum = 0;
   }
+  stage = clmax+1;
   switch(clmax-4){
     case 0:
       stage = 5;
@@ -531,8 +532,14 @@ function setup() {
     case 12:
       stage = 17;
       break;
-    default:
+    case 13:
       stage = 18;
+      break;
+    case 14:
+      stage = 19;
+      break;
+    default:
+      stage = 20;
       break;
   }
   
@@ -637,10 +644,10 @@ async function gs(){
     if(highScore != null){
       high = parseInt(highScore);
       let all = document.getElementById('all');
-      all.innerHTML = '<h3>総合得点　：　20(初)</h3> <h3>最高記録　：　' + high + '</h3>';
+      all.innerHTML = '<h3>総合得点　：　0</h3> <h3>最高記録　：　' + high + '</h3>';
     }
     else{
-      high = 20;
+      high = 0;
       if(unlimi) localStorage.setItem('highScore-s', String(high));
       else localStorage.setItem('highScore', String(high));
     }
