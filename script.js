@@ -2,7 +2,7 @@ const elem = document.documentElement;
 
 let wmap = [];
 let i, j;
-let stage = 20;
+let stage = 19;
 let men = 1;
 let tyu = 0;
 let over = 0;
