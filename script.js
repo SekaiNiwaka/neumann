@@ -2,7 +2,7 @@ const elem = document.documentElement;
 
 let wmap = [];
 let i, j;
-let stage = 18;
+let stage = 5;
 let men = 1;
 let tyu = 0;
 let over = 0;
@@ -494,7 +494,7 @@ function setup() {
   stage = clmax+1;
   switch(clmax-4){
     case 0:
-      stage = 5;
+      stage = 18;//ここを5に戻す
       break;
     case 1:
       stage = 6;
