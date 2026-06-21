@@ -138,7 +138,7 @@ async function create() {
         target.appendChild(element);
         random = Math.floor(Math.random() *  5);
         if(random >= 3){
-          random = 8;
+          random = 9;
         }
         else{
           random = Math.floor(Math.random() * (Math.floor(stage/2)));
