@@ -501,7 +501,12 @@ function setup() {
   p.style.color = 'gray';
   tyu = 0;
   if(clnum){
-    clmax++;
+    if(clsub == 3){
+      clmax++;
+      clsub = 1;
+    }
+    else
+      clsub++;
     clnum = 0;
   }
   stage = clmax+1;
