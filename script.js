@@ -389,9 +389,15 @@ function result(){
     s.innerHTML = '<h3 style="color: red;">正解　　：　+10 × ' + sei + '</h3> <h3 style="color: yellow;">未選択　：　-10 × ' + mis + '</h3> <h3 style="color: royalblue;">不正解　：　-15 × ' + hus + '</h3> <h3>今回　　：　<span>' + kon + '</span></h3>';
   }
 
-  if(kon < 0){ 
+  let all = document.getElementById('all');
+  total += kon;
+
+  all.innerHTML = '<h3>残りHP　：　' + total + '</h3> <h3>最高到達　：　' + high + '</h3>';
+
+  if(total < 0){ 
     over = 1;
     tyu = 1;
+    all.innerHTML = '<h3 style="color: red;">残りHP　：　' + total + '</h3> <h3>最高到達　：　' + high + '</h3>';
     let go = document.getElementById('over');
     go.style.display = 'flex';
     let sub = document.getElementById('submit');
@@ -465,7 +471,6 @@ document.addEventListener('DOMContentLoaded', function() {
 function setup() {
   if(!ini){
     let all = document.getElementById('all');
-    total += kon;
     
     if(stage == clmax+1 && kon >= 0){
       clnum++;
