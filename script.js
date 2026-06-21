@@ -478,11 +478,11 @@ function setup() {
     
     if(high < (clmax - 2) || high2 < clsub){
       if(unlimi){
-        localStorage.setItem('highScore-s', String(clmax-3));
+        localStorage.setItem('highScore-s', String(clmax-2));
         localStorage.setItem('highScore-s-sub', String(clsub));
       }
       else{
-        localStorage.setItem('highScore', String(clmax-3));
+        localStorage.setItem('highScore', String(clmax-2));
         localStorage.setItem('highScore-sub', String(clsub));
       }
       high = clmax - 2;
