@@ -475,7 +475,7 @@ function setup() {
       else localStorage.setItem('highScore', String(total));
       high = total;
     }
-    all.innerHTML = '<h3>総合得点　：　' + total + '</h3> <h3>最高記録　：　' + high + '</h3>';
+    all.innerHTML = '<h3>残りHP　：　' + total + '</h3> <h3>最高到達　：　' + high + '</h3>';
   }
   ini = 0;
 
@@ -638,7 +638,7 @@ async function gs(){
     if(highScore != null){
       high = parseInt(highScore);
       let all = document.getElementById('all');
-      all.innerHTML = '<h3>総合得点　：　0</h3> <h3>最高記録　：　' + high + '</h3>';
+      all.innerHTML = '<h3>残りHP　：　0</h3> <h3>最高到達　：　' + high + '</h3>';
     }
     else{
       high = 0;
