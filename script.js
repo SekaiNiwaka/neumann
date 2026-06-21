@@ -373,7 +373,7 @@ function result(){
       }
     }
   }
-  kon = sei*10 - mis*10 - hus*15 - tb;
+  kon = sei*10 - mis*5 - hus*15 - tb;
   if(sei >= 1 && mis == 0 && hus == 0){
     kon *= 2;
     let p = document.getElementById('per');
@@ -382,10 +382,10 @@ function result(){
   }
   let s = document.getElementById('scr');
   if(kon >= 0){
-    s.innerHTML = '<h3 style="color: red;">正解　　：　+10 × ' + sei + '</h3> <h3 style="color: yellow;">未選択　：　-10 × ' + mis + '</h3> <h3 style="color: royalblue;">不正解　：　-15 × ' + hus + '</h3> <h3>今回　　：　' + kon + '</h3>';
+    s.innerHTML = '<h3 style="color: red;">正解　　：　+10 × ' + sei + '</h3> <h3 style="color: yellow;">未選択　：　-5 × ' + mis + '</h3> <h3 style="color: royalblue;">不正解　：　-15 × ' + hus + '</h3> <h3>今回　　：　' + kon + '</h3>';
   }
   else{
-    s.innerHTML = '<h3 style="color: red;">正解　　：　+10 × ' + sei + '</h3> <h3 style="color: yellow;">未選択　：　-10 × ' + mis + '</h3> <h3 style="color: royalblue;">不正解　：　-15 × ' + hus + '</h3> <h3>今回　　：　<span>' + kon + '</span></h3>';
+    s.innerHTML = '<h3 style="color: red;">正解　　：　+10 × ' + sei + '</h3> <h3 style="color: yellow;">未選択　：　-5 × ' + mis + '</h3> <h3 style="color: royalblue;">不正解　：　-15 × ' + hus + '</h3> <h3>今回　　：　<span>' + kon + '</span></h3>';
   }
 
   if(kon < 0){ 
@@ -494,7 +494,7 @@ function setup() {
   stage = clmax+1;
   switch(clmax-4){
     case 0:
-      stage = 18;//ここを5に戻す
+      stage = 5;
       break;
     case 1:
       stage = 6;
