@@ -6,7 +6,7 @@ let stage = 5;
 let men = 1;
 let tyu = 0;
 let over = 0;
-let sei = 0, mis = 0, hus = 0, kon = 0, total = 0, high = 0;
+let sei = 0, mis = 0, hus = 0, kon = 0, total = 20, high = 0;
 let tb = 0;
 let timerId;
 let clickok = true;
@@ -639,13 +639,13 @@ async function gs(){
     if(highScore != null){
       high = highScore;
       let all = document.getElementById('all');
-      all.innerHTML = '<h3>残りHP　：　0</h3> <h3>最高到達　：　' + high + '</h3>';
+      all.innerHTML = '<h3>残りHP　：　20</h3> <h3>最高到達　：　' + high + '</h3>';
     }
     else{
       if(unlimi) localStorage.setItem('highScore-s', "1 - 1");
       else localStorage.setItem('highScore', "1 - 1");
       let all = document.getElementById('all');
-      all.innerHTML = '<h3>残りHP　：　0</h3> <h3>最高到達　：　1 - 1</h3>';
+      all.innerHTML = '<h3>残りHP　：　20</h3> <h3>最高到達　：　1 - 1</h3>';
     }
     const game = document.getElementById('game');
     const title = document.getElementById('title');
