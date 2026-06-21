@@ -10,7 +10,7 @@ let sei = 0, mis = 0, hus = 0, kon = 0, total = 0, high = 0;
 let tb = 0;
 let timerId;
 let clickok = true;
-let clmax = 4, clnum = 0, clsub = 1;
+let clmax = 4, clnum = 0, clsub = 0;
 let remainMSec, remainSec = 50;
 let unlimi = 0;
 let ini = 1;
@@ -141,7 +141,7 @@ async function create() {
           random = 9;
         }
         else{
-          random = Math.floor(Math.random() * (Math.floor(stage/2)));
+          random = Math.floor(Math.random() * (Math.round(stage/2)));
         }
         
         switch(random){
@@ -642,9 +642,8 @@ async function gs(){
       all.innerHTML = '<h3>残りHP　：　0</h3> <h3>最高到達　：　' + high + '</h3>';
     }
     else{
-      high = 0;
-      if(unlimi) localStorage.setItem('highScore-s', String(high));
-      else localStorage.setItem('highScore', String(high));
+      if(unlimi) localStorage.setItem('highScore-s', "1 - 1");
+      else localStorage.setItem('highScore', "1 - 1");
     }
     const game = document.getElementById('game');
     const title = document.getElementById('title');
