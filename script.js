@@ -10,7 +10,7 @@ let sei = 0, mis = 0, hus = 0, kon = 0, total = 0, high = 0;
 let tb = 0;
 let timerId;
 let clickok = true;
-let clmax = 4, clnum = 0, clsub = 0;
+let clmax = 4, clnum = 0, clsub = 1;
 let remainMSec, remainSec = 50;
 let unlimi = 0;
 let ini = 1;
