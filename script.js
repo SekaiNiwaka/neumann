@@ -6,7 +6,7 @@ let stage = 5;
 let men = 1;
 let tyu = 0;
 let over = 0;
-let sei = 0, mis = 0, hus = 0, kon = 0, total = 20, high = 0;
+let sei = 0, mis = 0, hus = 0, kon = 0, total = 20, high = 0, high2 = 0;
 let tb = 0;
 let timerId;
 let clickok = true;
@@ -392,12 +392,12 @@ function result(){
   let all = document.getElementById('all');
   total += kon;
 
-  all.innerHTML = '<h3>残りHP　：　' + total + '</h3> <h3>最高到達　：　' + high + '</h3>';
+  all.innerHTML = '<h3>残りHP　：　' + total + '</h3> <h3>最高到達　：　' + high + " - " + high2 + '</h3>';
 
   if(total < 0){ 
     over = 1;
     tyu = 1;
-    all.innerHTML = '<h3>残りHP　：　' + '<span>' + total + '</span>' + '</h3> <h3>最高到達　：　' + high + '</h3>';
+    all.innerHTML = '<h3>残りHP　：　' + '<span>' + total + '</span>' + '</h3> <h3>最高到達　：　' + high + " - " + high2 + '</h3>';
     let go = document.getElementById('over');
     go.style.display = 'flex';
     let sub = document.getElementById('submit');
@@ -475,13 +475,20 @@ function setup() {
     if(stage == clmax+1){
       clnum++;
     }
-
-    if(high < total){
-      if(unlimi) localStorage.setItem('highScore-s', String(total));
-      else localStorage.setItem('highScore', String(total));
-      high = total;
+    
+    if(high < (clmax -3) || high2 < clsub){
+      if(unlimi){
+        localStorage.setItem('highScore-s', String(clmax-3));
+        localStorage.setItem('highScore-s-sub', String(clsub));
+      }
+      else{
+        localStorage.setItem('highScore', String(clmax-3));
+        localStorage.setItem('highScore-sub', String(clsub));
+      }
+      high = clmax - 3;
+      high2 = clsub;
     }
-    all.innerHTML = '<h3>残りHP　：　' + total + '</h3> <h3>最高到達　：　' + high + '</h3>';
+    all.innerHTML = '<h3>残りHP　：　' + total + '</h3> <h3>最高到達　：　' + high + " - " + high2 + '</h3>';
   }
   ini = 0;
 
@@ -634,21 +641,31 @@ async function gs(){
   if(clickok){
     clickok = false;
     let highScore;
+    let highScore_sub;
     if(unlimi){
       highScore = localStorage.getItem('highScore-s');
+      highScore_sub = localStorage.getItem('highScore-s-sub');
     }
     else{
       highScore = localStorage.getItem('highScore');
+      highScore_sub = localStorage.getItem('highScore-sub');
     }
     
-    if(highScore != null){
-      high = highScore;
+    if(highScore != null && highScore_sub != null){
+      high = parseInt(highScore);
+      high2 = parseInt(highScore_sub);
       let all = document.getElementById('all');
-      all.innerHTML = '<h3>残りHP　：　20</h3> <h3>最高到達　：　' + high + '</h3>';
+      all.innerHTML = '<h3>残りHP　：　20</h3> <h3>最高到達　：　' + high + " - " + high2 + '</h3>';
     }
     else{
-      if(unlimi) localStorage.setItem('highScore-s', "1 - 1");
-      else localStorage.setItem('highScore', "1 - 1");
+      if(unlimi){
+        localStorage.setItem('highScore-s', "1");
+        localStorage.setItem('highScore-s-sub', "1");
+      }
+      else{
+        localStorage.setItem('highScore', "1");
+        localStorage.setItem('highScore-sub', "1");
+      }
       let all = document.getElementById('all');
       all.innerHTML = '<h3>残りHP　：　20</h3> <h3>最高到達　：　1 - 1</h3>';
     }
