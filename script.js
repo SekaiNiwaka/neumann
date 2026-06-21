@@ -141,7 +141,7 @@ async function create() {
           random = 8;
         }
         else{
-          random = Math.floor(Math.random() * (Math.round(stage/2))-1);
+          random = Math.floor(Math.random() * (Math.floor(stage/2)));
         }
         
         switch(random){
@@ -181,6 +181,7 @@ async function create() {
             num[i+1][j+1] = 8;
             break;
           case 7:
+          case 8:
             element.textContent = 9;
             element.classList.add('nine');
             num[i+1][j+1] = 9;
