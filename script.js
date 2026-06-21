@@ -563,7 +563,7 @@ function setup() {
 
   console.log(num);
   let m = document.getElementById('men');
-  m.innerHTML = '<h3 style="text-align: center;">ステージ' + (clmax-3) + " - " + clsub + '</men>';
+  m.innerHTML = '<h3 style="text-align: center;">' + (clmax-3) + " - " + clsub + '</men>';//ステージ
   let s = document.getElementById('scr');
   s.innerHTML = '<h3 style="color: red;">正解　　：　---</h3> <h3 style="color: yellow;">未選択　：　---</h3> <h3 style="color: royalblue;">不正解　：　---</h3> <h3>今回　　：　---</h3>';
   let tim = document.getElementById('tim');
