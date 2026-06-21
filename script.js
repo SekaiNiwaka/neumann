@@ -397,7 +397,7 @@ function result(){
   if(total < 0){ 
     over = 1;
     tyu = 1;
-    all.innerHTML = '<h3 style="color: red;">残りHP　：　' + total + '</h3> <h3>最高到達　：　' + high + '</h3>';
+    all.innerHTML = '<h3>残りHP　：　' + '<span>' + kon + '</span> + '</h3> <h3>最高到達　：　' + high + '</h3>';
     let go = document.getElementById('over');
     go.style.display = 'flex';
     let sub = document.getElementById('submit');
