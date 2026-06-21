@@ -141,7 +141,7 @@ async function create() {
           random = 9;
         }
         else{
-          random = Math.floor(Math.random() * (Math.floor(stage/2)));
+          random = Math.floor(Math.random() * (Math.round(stage/2)));
         }
         
         switch(random){
