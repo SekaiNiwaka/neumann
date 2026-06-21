@@ -10,7 +10,7 @@ let sei = 0, mis = 0, hus = 0, kon = 0, total = 0, high = 0;
 let tb = 0;
 let timerId;
 let clickok = true;
-let clmax = 4, clnum = 0;
+let clmax = 4, clnum = 0, clsub = 0;
 let remainMSec, remainSec = 50;
 let unlimi = 0;
 let ini = 1;
@@ -563,7 +563,7 @@ function setup() {
 
   console.log(num);
   let m = document.getElementById('men');
-  m.innerHTML = '<h3 style="text-align: center;">レベル' + (clmax-3) + '</men>';
+  m.innerHTML = '<h3 style="text-align: center;">ステージ' + (clmax-3) + " - " + clsub + '</men>';
   let s = document.getElementById('scr');
   s.innerHTML = '<h3 style="color: red;">正解　　：　---</h3> <h3 style="color: yellow;">未選択　：　---</h3> <h3 style="color: royalblue;">不正解　：　---</h3> <h3>今回　　：　---</h3>';
   let tim = document.getElementById('tim');
