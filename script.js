@@ -476,7 +476,7 @@ function setup() {
       clnum++;
     }
     
-    if(high < (clmax -3) || high2 < clsub){
+    if(high < (clmax - 2) || high2 < clsub){
       if(unlimi){
         localStorage.setItem('highScore-s', String(clmax-3));
         localStorage.setItem('highScore-s-sub', String(clsub));
@@ -485,7 +485,7 @@ function setup() {
         localStorage.setItem('highScore', String(clmax-3));
         localStorage.setItem('highScore-sub', String(clsub));
       }
-      high = clmax - 3;
+      high = clmax - 2;
       high2 = clsub;
     }
     all.innerHTML = '<h3>残りHP　：　' + total + '</h3> <h3>最高到達　：　' + high + " - " + high2 + '</h3>';
