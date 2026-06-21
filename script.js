@@ -564,7 +564,7 @@ function setup() {
   let m = document.getElementById('men');
   m.innerHTML = '<h3 style="text-align: center;">レベル' + (clmax-3) + '</men>';
   let s = document.getElementById('scr');
-  s.innerHTML = '<h3 style="color: red;">正解　　：　+10 ×</h3> <h3 style="color: yellow;">未選択　：　-10 ×</h3> <h3 style="color: royalblue;">不正解　：　-15 ×</h3> <h3>今回　　：　---</h3>';
+  s.innerHTML = '<h3 style="color: red;">正解　　：　---</h3> <h3 style="color: yellow;">未選択　：　---</h3> <h3 style="color: royalblue;">不正解　：　---</h3> <h3>今回　　：　---</h3>';
   let tim = document.getElementById('tim');
   tim.addEventListener('click', plus);
   let sub = document.getElementById('submit');
@@ -591,7 +591,7 @@ function plus(){
     }
     document.querySelector('header')
     let s = document.getElementById('scr');
-    s.innerHTML = '<h3 style="color: red;">正解　　：　+10 ×</h3> <h3 style="color: yellow;">未選択　：　-10 ×</h3> <h3 style="color: royalblue;">不正解　：　-15 ×</h3> <h3>今回　　：　' + (-tb) + '</h3>';
+    s.innerHTML = '<h3 style="color: red;">正解　　：　---</h3> <h3 style="color: yellow;">未選択　：　---</h3> <h3 style="color: royalblue;">不正解　：　---</h3> <h3>今回　　：　' + (-tb) + '</h3>';
   }
 }
 
