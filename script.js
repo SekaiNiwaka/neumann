@@ -475,17 +475,26 @@ function setup() {
     if(stage == clmax+1){
       clnum++;
     }
+    if(clnum){
+      if(clsub == 3){
+        clmax++;
+        clsub = 1;
+      }
+      else
+        clsub++;
+      clnum = 0;
+    }
     
-    if(high < (clmax - 2) || high2 < clsub){
+    if(high < (clmax - 3) || high2 < clsub){
       if(unlimi){
-        localStorage.setItem('highScore-s', String(clmax-2));
+        localStorage.setItem('highScore-s', String(clmax-3));
         localStorage.setItem('highScore-s-sub', String(clsub));
       }
       else{
-        localStorage.setItem('highScore', String(clmax-2));
+        localStorage.setItem('highScore', String(clmax-3));
         localStorage.setItem('highScore-sub', String(clsub));
       }
-      high = clmax - 2;
+      high = clmax - 3;
       high2 = clsub;
     }
     all.innerHTML = '<h3>残りHP　：　' + total + '</h3> <h3>最高到達　：　' + high + " - " + high2 + '</h3>';
@@ -500,15 +509,7 @@ function setup() {
   let p = document.getElementById('per');
   p.style.color = 'gray';
   tyu = 0;
-  if(clnum){
-    if(clsub == 3){
-      clmax++;
-      clsub = 1;
-    }
-    else
-      clsub++;
-    clnum = 0;
-  }
+  
   stage = clmax+1;
   switch(clmax-4){
     case 0:
