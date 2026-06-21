@@ -645,7 +645,7 @@ async function gs(){
       if(unlimi) localStorage.setItem('highScore-s', "1 - 1");
       else localStorage.setItem('highScore', "1 - 1");
       let all = document.getElementById('all');
-      all.innerHTML = '<h3>残りHP　：　0</h3> <h3>最高到達　：　1 - 1'</h3>';
+      all.innerHTML = '<h3>残りHP　：　0</h3> <h3>最高到達　：　1 - 1</h3>';
     }
     const game = document.getElementById('game');
     const title = document.getElementById('title');
