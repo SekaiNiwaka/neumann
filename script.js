@@ -376,9 +376,9 @@ function result(){
   }
   kon = sei*10 - mis*10 - hus*15 - tb;
   if(sei >= 1 && mis == 0 && hus == 0){
-    kon *= 2;
+    kon += 50;
     let p = document.getElementById('per');
-    p.innerText = 'パーフェクト　：　×2';
+    p.innerText = 'パーフェクト　：　+50';
     p.style.color = '#00ff00';
   }
   let s = document.getElementById('scr');
