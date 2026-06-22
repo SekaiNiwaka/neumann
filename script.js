@@ -6,7 +6,7 @@ let stage = 5;
 let men = 1;
 let tyu = 0;
 let over = 0;
-let sei = 0, mis = 0, hus = 0, kon = 0, total = 20, high = 1, high2 = 1;
+let sei = 0, mis = 0, hus = 0, kon = 0, total = 50, high = 1, high2 = 1;
 let tb = 0;
 let timerId;
 let clickok = true;
