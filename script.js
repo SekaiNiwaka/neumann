@@ -300,7 +300,8 @@ function label() {
   })
   clickok = true;
   if(!unlimi){
-    const totalTime = stage**2 * 2000;
+    //const totalTime = stage**2 * 2000;
+    const totalTime = total;
     const oldTime = Date.now();
     timerId = setInterval(() => {
       const currentTime = Date.now();
