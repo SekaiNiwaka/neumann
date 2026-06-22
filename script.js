@@ -662,7 +662,7 @@ async function gs(){
       high = parseInt(highScore);
       high2 = parseInt(highScore_sub);
       let all = document.getElementById('all');
-      all.innerHTML = '<h3>残りHP　：　20</h3> <h3>最高到達　：　' + high + " - " + high2 + '</h3>';
+      all.innerHTML = '<h3>残りHP　：　50</h3> <h3>最高到達　：　' + high + " - " + high2 + '</h3>';
     }
     else{
       if(unlimi){
@@ -674,7 +674,7 @@ async function gs(){
         localStorage.setItem('highScore-sub', "1");
       }
       let all = document.getElementById('all');
-      all.innerHTML = '<h3>残りHP　：　20</h3> <h3>最高到達　：　1 - 1</h3>';
+      all.innerHTML = '<h3>残りHP　：　50</h3> <h3>最高到達　：　1 - 1</h3>';
     }
     const game = document.getElementById('game');
     const title = document.getElementById('title');
