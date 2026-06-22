@@ -272,22 +272,28 @@ async function create() {
     wall.style.height = 100/(stage+2) + '%';
     wall.style.width = 100/(stage+2) + '%';
     target.appendChild(wall);
-    random = Math.floor(Math.random() * 3);
-    if(wmap[i] == 1){
-      wall.classList.add('loop');
-      num[stage+1][i+1] = 'l';
+    if(clsub >= 2){
+      random = Math.floor(Math.random() * 3);
+      if(wmap[i] == 1){
+        wall.classList.add('loop');
+        num[stage+1][i+1] = 'l';
+      }
+      else{
+        switch(random){
+          default:
+            wall.classList.add('kyu');
+            num[stage+1][i+1] = 'k';
+            break;
+          case 0:
+            wall.classList.add('han');
+            num[stage+1][i+1] = 'h';
+            break;
+        }
+      }
     }
     else{
-      switch(random){
-        default:
-          wall.classList.add('kyu');
-          num[stage+1][i+1] = 'k';
-          break;
-        case 0:
-          wall.classList.add('han');
-          num[stage+1][i+1] = 'h';
-          break;
-      }
+      wall.classList.add('kyu');
+      num[stage+1][i+1] = 'k';
     }
     obj[stage+1][i+1] = wall;
     await delay(25);
