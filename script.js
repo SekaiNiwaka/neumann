@@ -505,6 +505,23 @@ function explore(i, j, di, dj) {
 
 
 document.addEventListener('DOMContentLoaded', function() {
+    // 1. 指2本以上のピンチ操作を禁止
+    document.addEventListener('touchstart', (event) => {
+      if (event.touches.length > 1) {
+        event.preventDefault();
+      }
+    }, { passive: false });
+
+    // 2. ダブルタップによるズームを禁止
+    let lastTouchEnd = 0;
+    document.addEventListener('touchend', (event) => {
+      const now = (new Date()).getTime();
+      if (now - lastTouchEnd <= 300) {
+        event.preventDefault();
+      }
+      lastTouchEnd = now;
+    }, { passive: false });
+
     if (checkVersion()) return;
     window.addEventListener('resize', () => {
       const cant = document.getElementById('cant');
