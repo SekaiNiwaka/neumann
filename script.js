@@ -312,20 +312,26 @@ function label() {
       remainMSec = totalTime - diff + tb*1000;
       remainSec = Math.ceil(remainMSec / 1000);
 
-      let label = remainSec;
+      // マイナス秒にならないようにガードをかける
+      let label = remainSec < 0 ? 0 : remainSec;
 
       if(remainSec <= 5){
         document.querySelector('header').id = 'limit';
       }
 
+      // タイムアップの判定
       if(remainMSec <= 0){
         clearInterval(timerId);
-        document.querySelector('header').innerHTML = '0';
+        label = 0; // 表示を確実に0にする
         clickok = false;
         tyu = 1;
+        // タイマー停止後の最終画面更新をここで行う
+        document.querySelector('header').innerHTML = label;
         result();
+        return; // 以降の処理（下部の書き換え）を行わずに終了する
       }
 
+      // 通常時の画面更新
       document.querySelector('header').innerHTML = label;
     }, 1000);
   }
