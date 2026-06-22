@@ -1,4 +1,4 @@
-const CURRENT_VERSION = "2.0.1";
+const CURRENT_VERSION = "2.0.2";
 const elem = document.documentElement;
 
 let wmap = [];
