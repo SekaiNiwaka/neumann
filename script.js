@@ -45,6 +45,14 @@ document.addEventListener('contextmenu', (event) => {
     
 });
 
+// PCのトラックパッドによるピンチイン・ピンチアウト（ズーム）を禁止する
+document.addEventListener('wheel', (event) => {
+  // ctrlKey が true の場合は、ピンチ操作または Ctrl+ホイールによるズーム操作
+  if (event.ctrlKey) {
+    event.preventDefault();
+  }
+}, { passive: false }); // preventDefaultを有効にするために passive: false が必須
+
 function openFullscreen() {
   if (elem.requestFullscreen) {
     elem.requestFullscreen();
