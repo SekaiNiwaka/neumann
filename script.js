@@ -428,7 +428,7 @@ function result(){
 
   all.innerHTML = '<h3>残りHP　：　' + total + '</h3> <h3>最高到達　：　' + high + " - " + high2 + '</h3>';
 
-  if(total < 0){ 
+  if(total <= 0){ 
     over = 1;
     tyu = 1;
     all.innerHTML = '<h3>残りHP　：　' + '<span>' + total + '</span>' + '</h3> <h3>最高到達　：　' + high + " - " + high2 + '</h3>';
