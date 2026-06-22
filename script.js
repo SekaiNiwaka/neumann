@@ -73,6 +73,7 @@ function delay(ms) {
 }
 
 async function create() {
+  if(total <= 5) document.querySelector('header').id = 'limit';
   let target = document.getElementById('waku');
   let element, wall, random;
   for(i=0; i<stage; i++){
@@ -303,7 +304,6 @@ function label() {
     //const totalTime = stage**2 * 2000;
     const totalTime = total*1000;
     const oldTime = Date.now();
-    if(total <= 5) document.querySelector('header').id = 'limit';
     document.querySelector('header').innerHTML = total;
     timerId = setInterval(() => {
       const currentTime = Date.now();
