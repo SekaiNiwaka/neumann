@@ -310,7 +310,7 @@ function label() {
       remainMSec = totalTime - diff + tb*1000;
       remainSec = Math.ceil(remainMSec / 1000);
 
-      let label = remainSec;
+      let label = total;//ここ
 
       if(remainSec <= 5){
         document.querySelector('header').id = 'limit';
