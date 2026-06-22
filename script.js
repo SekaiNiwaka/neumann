@@ -577,7 +577,7 @@ function setup() {
   }
   document.querySelector('header').id = 'none';
   if(unlimi) document.querySelector('header').innerHTML = "∞";
-  else document.querySelector('header').innerHTML = Math.ceil(stage**2 * 2);
+  else document.querySelector('header').innerHTML = Math.ceil(total);
   
 
   console.log(num);
