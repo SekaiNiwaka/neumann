@@ -505,7 +505,7 @@ function setup() {
   wmap = [];
   sei = 0, mis = 0, hus = 0, kon = 0;
   tb = 0;
-  zik.innerText = '時間追加　：　0';
+  //zik.innerText = '時間追加　：　0';
   zik.style.color = 'gray';
   let p = document.getElementById('per');
   p.style.color = 'gray';
