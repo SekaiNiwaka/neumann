@@ -7,7 +7,7 @@ let stage = 5;
 let men = 1;
 let tyu = 0;
 let over = 0;
-let sei = 0, mis = 0, hus = 0, kon = 0, total = 30, high = 1, high2 = 1;
+let sei = 0, mis = 0, hus = 0, kon = 0, total = 50, high = 1, high2 = 1;
 let tb = 0;
 let timerId;
 let clickok = true;
@@ -160,7 +160,7 @@ async function create() {
     for(j=0; j<stage; j++){
       //今日ここから06/22
       random = Math.floor(Math.random() * 10);
-      if(clsub <= 2) random = 1;
+      if(clsub <= 1) random = 1;
       if(random <= 7){
         element = document.createElement('button');
         element.style.height = 100/(stage+2) + '%';
@@ -425,7 +425,7 @@ function result(){
       }
     }
   }
-  kon = sei*10 - mis*10 - hus*15 - tb;
+  kon = sei*5 - mis*10 - hus*10 - tb;
   if(sei >= 1 && mis == 0 && hus == 0){
     kon += 10;
     let p = document.getElementById('per');
@@ -434,10 +434,10 @@ function result(){
   }
   let s = document.getElementById('scr');
   if(kon >= 0){
-    s.innerHTML = '<h3 style="color: red;">正解　　：　+5 × ' + sei + '</h3> <h3 style="color: yellow;">未選択　：　-5 × ' + mis + '</h3> <h3 style="color: royalblue;">不正解　：　-10 × ' + hus + '</h3> <h3>今回　　：　' + kon + '</h3>';
+    s.innerHTML = '<h3 style="color: red;">正解　　：　+5 × ' + sei + '</h3> <h3 style="color: yellow;">未選択　：　-10 × ' + mis + '</h3> <h3 style="color: royalblue;">不正解　：　-10 × ' + hus + '</h3> <h3>今回　　：　' + kon + '</h3>';
   }
   else{
-    s.innerHTML = '<h3 style="color: red;">正解　　：　+5 × ' + sei + '</h3> <h3 style="color: yellow;">未選択　：　-5 × ' + mis + '</h3> <h3 style="color: royalblue;">不正解　：　-10 × ' + hus + '</h3> <h3>今回　　：　<span>' + kon + '</span></h3>';
+    s.innerHTML = '<h3 style="color: red;">正解　　：　+5 × ' + sei + '</h3> <h3 style="color: yellow;">未選択　：　-10 × ' + mis + '</h3> <h3 style="color: royalblue;">不正解　：　-10 × ' + hus + '</h3> <h3>今回　　：　<span>' + kon + '</span></h3>';
   }
 
   let all = document.getElementById('all');
@@ -528,7 +528,7 @@ function setup() {
       clnum++;
     }
     if(clnum){
-      if(clsub == 3){
+      if(clsub == 2){
         clmax++;
         clsub = 1;
       }
@@ -713,7 +713,7 @@ async function gs(){
       high = parseInt(highScore);
       high2 = parseInt(highScore_sub);
       let all = document.getElementById('all');
-      all.innerHTML = '<h3>残りHP　：　30</h3> <h3>最高到達　：　' + high + " - " + high2 + '</h3>';
+      all.innerHTML = '<h3>残りHP　：　50</h3> <h3>最高到達　：　' + high + " - " + high2 + '</h3>';
     }
     else{
       if(unlimi){
@@ -725,7 +725,7 @@ async function gs(){
         localStorage.setItem('highScore-sub', "1");
       }
       let all = document.getElementById('all');
-      all.innerHTML = '<h3>残りHP　：　30</h3> <h3>最高到達　：　1 - 1</h3>';
+      all.innerHTML = '<h3>残りHP　：　50</h3> <h3>最高到達　：　1 - 1</h3>';
     }
     const game = document.getElementById('game');
     const title = document.getElementById('title');
