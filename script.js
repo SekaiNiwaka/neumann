@@ -1,3 +1,4 @@
+const CURRENT_VERSION = "1.0.1";
 const elem = document.documentElement;
 
 let wmap = [];
@@ -70,6 +71,22 @@ function closeFullscreen() {
 
 function delay(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function checkVersion() {
+  const savedVersion = localStorage.getItem('game_version');
+  
+  if (savedVersion !== CURRENT_VERSION) {
+    // バージョンが異なる、または初回起動の場合
+    localStorage.clear(); 
+    localStorage.setItem('game_version', CURRENT_VERSION); 
+    
+    if (savedVersion !== null) {
+      location.reload();
+      return true; 
+    }
+  }
+  return false;
 }
 
 async function create() {
@@ -488,6 +505,7 @@ function explore(i, j, di, dj) {
 
 
 document.addEventListener('DOMContentLoaded', function() {
+    if (checkVersion()) return;
     window.addEventListener('resize', () => {
       const cant = document.getElementById('cant');
       if(window.innerWidth <= 1.4*window.innerHeight){
