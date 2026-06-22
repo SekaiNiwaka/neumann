@@ -303,6 +303,7 @@ function label() {
     //const totalTime = stage**2 * 2000;
     const totalTime = total*1000;
     const oldTime = Date.now();
+    document.querySelector('header').innerHTML = total;
     timerId = setInterval(() => {
       const currentTime = Date.now();
       const diff = currentTime - oldTime;
@@ -310,7 +311,7 @@ function label() {
       remainMSec = totalTime - diff + tb*1000;
       remainSec = Math.ceil(remainMSec / 1000);
 
-      let label = total;//ここ
+      let label = remainSec;
 
       if(remainSec <= 5){
         document.querySelector('header').id = 'limit';
