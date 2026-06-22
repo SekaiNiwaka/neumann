@@ -425,7 +425,7 @@ function result(){
       }
     }
   }
-  kon = sei*5 - mis*10 - hus*10 - tb;
+  kon = sei*5 - mis*10 - hus*15 - tb;
   if(sei >= 1 && mis == 0 && hus == 0){
     kon += 10;
     let p = document.getElementById('per');
@@ -434,10 +434,10 @@ function result(){
   }
   let s = document.getElementById('scr');
   if(kon >= 0){
-    s.innerHTML = '<h3 style="color: red;">正解　　：　+5 × ' + sei + '</h3> <h3 style="color: yellow;">未選択　：　-10 × ' + mis + '</h3> <h3 style="color: royalblue;">不正解　：　-10 × ' + hus + '</h3> <h3>今回　　：　' + kon + '</h3>';
+    s.innerHTML = '<h3 style="color: red;">正解　　：　+5 × ' + sei + '</h3> <h3 style="color: yellow;">未選択　：　-10 × ' + mis + '</h3> <h3 style="color: royalblue;">不正解　：　-15 × ' + hus + '</h3> <h3>今回　　：　' + kon + '</h3>';
   }
   else{
-    s.innerHTML = '<h3 style="color: red;">正解　　：　+5 × ' + sei + '</h3> <h3 style="color: yellow;">未選択　：　-10 × ' + mis + '</h3> <h3 style="color: royalblue;">不正解　：　-10 × ' + hus + '</h3> <h3>今回　　：　<span>' + kon + '</span></h3>';
+    s.innerHTML = '<h3 style="color: red;">正解　　：　+5 × ' + sei + '</h3> <h3 style="color: yellow;">未選択　：　-10 × ' + mis + '</h3> <h3 style="color: royalblue;">不正解　：　-15 × ' + hus + '</h3> <h3>今回　　：　<span>' + kon + '</span></h3>';
   }
 
   let all = document.getElementById('all');
