@@ -681,9 +681,11 @@ async function gs(){
     title.classList.add('fade-out');
     game.style.display = 'block';
     let tim = document.getElementById('tim');
+    /*
     if(unlimi){
       tim.style.display = 'none';
     }
+    */
 
     let go = document.getElementById('over');
     go.style.display = 'none';
