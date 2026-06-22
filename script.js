@@ -107,7 +107,7 @@ async function create() {
     wall.style.width = 100/(stage+2) + '%';
     
     target.appendChild(wall);
-    if(clsub >= 2){
+    if(clsub >= 1){
       random = Math.floor(Math.random() * 4);
       switch(random){
         default:
@@ -142,7 +142,7 @@ async function create() {
     wall.style.height = 100/(stage+2) + '%';
     wall.style.width = 100/(stage+2) + '%';
     target.appendChild(wall);
-    if(clsub >= 2){
+    if(clsub >= 1){
       random = Math.floor(Math.random() * 4);
       switch(random){
         default:
@@ -168,7 +168,7 @@ async function create() {
     for(j=0; j<stage; j++){
       //今日ここから06/22
       random = Math.floor(Math.random() * 10);
-      if(clsub <= 1) random = 1;
+      if(clsub <= 0) random = 1;
       if(random <= 7){
         element = document.createElement('button');
         element.style.height = 100/(stage+2) + '%';
@@ -262,7 +262,7 @@ async function create() {
     wall.style.height = 100/(stage+2) + '%';
     wall.style.width = 100/(stage+2) + '%';
     target.appendChild(wall);
-    if(clsub >= 2){
+    if(clsub >= 1){
       random = Math.floor(Math.random() * 3);
       if(wmap[i+stage] == 1){
         wall.classList.add('loop');
@@ -297,7 +297,7 @@ async function create() {
     wall.style.height = 100/(stage+2) + '%';
     wall.style.width = 100/(stage+2) + '%';
     target.appendChild(wall);
-    if(clsub >= 2){
+    if(clsub >= 1){
       random = Math.floor(Math.random() * 3);
       if(wmap[i] == 1){
         wall.classList.add('loop');
