@@ -1,4 +1,4 @@
-const CURRENT_VERSION = "2.0.0";
+const CURRENT_VERSION = "2.0.1";
 const elem = document.documentElement;
 
 let wmap = [];
@@ -7,7 +7,7 @@ let stage = 5;
 let men = 1;
 let tyu = 0;
 let over = 0;
-let sei = 0, mis = 0, hus = 0, kon = 0, total = 50, high = 1, high2 = 1;
+let sei = 0, mis = 0, hus = 0, kon = 0, total = 20, high = 1, high2 = 1;
 let tb = 0;
 let timerId;
 let clickok = true;
@@ -427,17 +427,17 @@ function result(){
   }
   kon = sei*10 - mis*10 - hus*15 - tb;
   if(sei >= 1 && mis == 0 && hus == 0){
-    kon += 50;
+    kon += 10;
     let p = document.getElementById('per');
-    p.innerText = 'パーフェクト　：　+50';
+    p.innerText = 'パーフェクト　：　+10';
     p.style.color = '#00ff00';
   }
   let s = document.getElementById('scr');
   if(kon >= 0){
-    s.innerHTML = '<h3 style="color: red;">正解　　：　+10 × ' + sei + '</h3> <h3 style="color: yellow;">未選択　：　-10 × ' + mis + '</h3> <h3 style="color: royalblue;">不正解　：　-15 × ' + hus + '</h3> <h3>今回　　：　' + kon + '</h3>';
+    s.innerHTML = '<h3 style="color: red;">正解　　：　+5 × ' + sei + '</h3> <h3 style="color: yellow;">未選択　：　-5 × ' + mis + '</h3> <h3 style="color: royalblue;">不正解　：　-10 × ' + hus + '</h3> <h3>今回　　：　' + kon + '</h3>';
   }
   else{
-    s.innerHTML = '<h3 style="color: red;">正解　　：　+10 × ' + sei + '</h3> <h3 style="color: yellow;">未選択　：　-10 × ' + mis + '</h3> <h3 style="color: royalblue;">不正解　：　-15 × ' + hus + '</h3> <h3>今回　　：　<span>' + kon + '</span></h3>';
+    s.innerHTML = '<h3 style="color: red;">正解　　：　+5 × ' + sei + '</h3> <h3 style="color: yellow;">未選択　：　-5 × ' + mis + '</h3> <h3 style="color: royalblue;">不正解　：　-10 × ' + hus + '</h3> <h3>今回　　：　<span>' + kon + '</span></h3>';
   }
 
   let all = document.getElementById('all');
@@ -713,7 +713,7 @@ async function gs(){
       high = parseInt(highScore);
       high2 = parseInt(highScore_sub);
       let all = document.getElementById('all');
-      all.innerHTML = '<h3>残りHP　：　50</h3> <h3>最高到達　：　' + high + " - " + high2 + '</h3>';
+      all.innerHTML = '<h3>残りHP　：　20</h3> <h3>最高到達　：　' + high + " - " + high2 + '</h3>';
     }
     else{
       if(unlimi){
@@ -725,7 +725,7 @@ async function gs(){
         localStorage.setItem('highScore-sub', "1");
       }
       let all = document.getElementById('all');
-      all.innerHTML = '<h3>残りHP　：　50</h3> <h3>最高到達　：　1 - 1</h3>';
+      all.innerHTML = '<h3>残りHP　：　20</h3> <h3>最高到達　：　1 - 1</h3>';
     }
     const game = document.getElementById('game');
     const title = document.getElementById('title');
