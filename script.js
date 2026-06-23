@@ -98,7 +98,7 @@ function checkVersion() {
 }
 
 async function create() {
-  if(total <= 5) document.querySelector('header').id = 'limit';
+  //if(total <= 5) document.querySelector('header').id = 'limit';
   let target = document.getElementById('waku');
   let element, wall, random;
   for(i=0; i<stage; i++){
@@ -351,10 +351,10 @@ function label() {
   })
   clickok = true;
   if(!unlimi){
-    //const totalTime = stage**2 * 2000;
-    const totalTime = total*1000;
+    const totalTime = stage**2 * 2000;
+    //const totalTime = total*1000;
     const oldTime = Date.now();
-    document.querySelector('header').innerHTML = total;
+    document.querySelector('header').innerHTML = totalTime;
     timerId = setInterval(() => {
       const currentTime = Date.now();
       const diff = currentTime - oldTime;
@@ -653,7 +653,7 @@ function setup() {
   }
   document.querySelector('header').id = 'none';
   if(unlimi) document.querySelector('header').innerHTML = "∞";
-  else document.querySelector('header').innerHTML = Math.ceil(total);
+  else document.querySelector('header').innerHTML = Math.ceil(remainSec);
   
 
   console.log(num);
