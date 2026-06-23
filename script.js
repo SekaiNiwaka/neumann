@@ -653,7 +653,7 @@ function setup() {
   }
   document.querySelector('header').id = 'none';
   if(unlimi) document.querySelector('header').innerHTML = "∞";
-  else document.querySelector('header').innerHTML = Math.ceil(remainSec);
+  else document.querySelector('header').innerHTML = stage**2 * 2;
   
 
   console.log(num);
