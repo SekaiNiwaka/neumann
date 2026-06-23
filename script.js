@@ -354,7 +354,7 @@ function label() {
     const totalTime = stage**2 * 2000;
     //const totalTime = total*1000;
     const oldTime = Date.now();
-    document.querySelector('header').innerHTML = totalTime;
+    document.querySelector('header').innerHTML = stage**2 * 2;
     timerId = setInterval(() => {
       const currentTime = Date.now();
       const diff = currentTime - oldTime;
