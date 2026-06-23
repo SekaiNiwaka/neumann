@@ -433,19 +433,19 @@ function result(){
       }
     }
   }
-  kon = sei*5 - mis*10 - hus*15 - tb;
+  kon = sei*1 - mis*3 - hus*5 - tb;
   if(sei >= 1 && mis == 0 && hus == 0){
-    kon += 10;
+    kon += 5;
     let p = document.getElementById('per');
-    p.innerText = 'パーフェクト　：　+10';
+    p.innerText = 'パーフェクト　：　+5';
     p.style.color = '#00ff00';
   }
   let s = document.getElementById('scr');
   if(kon >= 0){
-    s.innerHTML = '<h3 style="color: red;">正解　　：　+5 × ' + sei + '</h3> <h3 style="color: yellow;">未選択　：　-10 × ' + mis + '</h3> <h3 style="color: royalblue;">不正解　：　-15 × ' + hus + '</h3> <h3>今回　　：　' + kon + '</h3>';
+    s.innerHTML = '<h3 style="color: red;">正解　　：　+1 × ' + sei + '</h3> <h3 style="color: yellow;">未選択　：　-3 × ' + mis + '</h3> <h3 style="color: royalblue;">不正解　：　-5 × ' + hus + '</h3> <h3>今回　　：　' + kon + '</h3>';
   }
   else{
-    s.innerHTML = '<h3 style="color: red;">正解　　：　+5 × ' + sei + '</h3> <h3 style="color: yellow;">未選択　：　-10 × ' + mis + '</h3> <h3 style="color: royalblue;">不正解　：　-15 × ' + hus + '</h3> <h3>今回　　：　<span>' + kon + '</span></h3>';
+    s.innerHTML = '<h3 style="color: red;">正解　　：　+1 × ' + sei + '</h3> <h3 style="color: yellow;">未選択　：　-3 × ' + mis + '</h3> <h3 style="color: royalblue;">不正解　：　-5 × ' + hus + '</h3> <h3>今回　　：　<span>' + kon + '</span></h3>';
   }
 
   let all = document.getElementById('all');
